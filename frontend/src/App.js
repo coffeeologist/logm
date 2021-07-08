@@ -1,99 +1,49 @@
-import React from 'react';
-import { observer } from 'mobx-react';
-import UserStore from './stores/UserStore';
-import LoginForm from './LoginForm';
-import InputField from './InputField';
-import SubmitButton from './SubmitButton';
-import './App.css';
+import React, { Component } from 'react';
+import Navigation from './Navigation';
+import firebase from './firebase.utils';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
-  async componentDidMount() {
-    try {
-      let res = await fetch('/isLoggedIn', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
+class App extends Component {
 
-      let result = await res.json();
-      
-      if (result && result.success) {
-        UserStore.loading = false;
-        UserStore.isLoggedIn = true;
-        UserStore.username = result.username;
-      }
-      else {
-        UserStore.loading = false;
-        UserStore.isLoggedIn = false;
-      }
+    state = {
+        authenticated: false,
+        userCredential: null
+    };
+
+ componentDidMount() {
+//    firebase.auth().onAuthStateChanged((authenticated) => {
+//      authenticated
+//        ? this.setState(() => ({
+//            authenticated: true,
+//          }))
+//        : this.setState(() => ({
+//            authenticated: false,
+//          }));
+//    });
+    console.log(this.state.authenticated);
+   firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        // User is signed in.
+        // this.setState(() => ({
+        //     authenticated: true,
+        //     userCredential: user
+        // }))
+       this.setState(() => ({
+           authenticated: true,
+           userCredential: user
+         }))
+        console.log(this.state.authenticated);
     }
-
-     catch (e) {
-        UserStore.loading = false;
-        UserStore.isLoggedIn = false;
-     }
-
-  }
-
-  async doLogout() {
-    try {
-      let res = await fetch('/logout', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-
-      let result = await res.json();
-      
-      if (result && result.success) {
-        UserStore.isLoggedIn = false;
-        UserStore.username = '';
-      }
-    }
-
-     catch (e) {
-        console.log(e);
-     }
-
-  }
-
-  render() {
-    if (UserStore.loading) {
-      return (
-        <div className="app">
-          <div classname="container">
-            Loading, please wait... 
-          </div>
-        </div>
-      )
-    } 
     else {
-      if (UserStore.isLoggedIn) {
-        <div className="app">
-          <div classname="container">
-            Welcome {UserStore.username}
-            <SubmitButton
-              text = {"Log out"}
-              disabled={false}
-              onClick={()=>this.doLogout()}
-            />
-          </div>
-        </div>
-      }
-      return (
-        <div className="app">
-          <div className="container">
-            <LoginForm />
-          </div>
-        </div>
-      );
-
+        this.setState(() => ({
+            authenticated: false,
+            userCredential: null
+        }))
     }
-  }
+    });
+ }
+ render() {
+   return <Navigation authenticated={this.state.authenticated} userCredential={this.state.userCredential} />;
+ }
 }
-
-export default observer(App);
+export default App;
