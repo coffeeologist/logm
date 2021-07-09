@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import NewMemoBox from './NewMemoBox';
 import MemoGallery from './MemoGallery';
-// import { Container, Flex, Box, Heading } from 'rebass';
-// const Dashboard = () => {
+
+// Main dashboard for each user
 class Dashboard extends Component {
  render() {
     return (
@@ -11,10 +11,12 @@ class Dashboard extends Component {
             <div>Logged in?: {this.props.authenticated.toString()} |</div>
             <div>Logged in with email address: {this.props.userCredential.email}</div>
             <div>uid: {this.props.userCredential.uid}</div>
+
             <NewMemoBox userCredential={this.props.userCredential} />
             <MemoGallery userCredential={this.props.userCredential} />
         </div>
     );
     }
-};
+}
+
 export default Dashboard;

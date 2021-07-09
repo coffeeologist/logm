@@ -1,37 +1,37 @@
 import React, {Component} from 'react';
 import firebase from './firebase.utils';
 
+// Displays the memos of a user
 class MemoGallery extends Component {
     constructor() {
         super();
-        // this.state.entries = ["hello"]
     }
 
+    // Once the component mounts, get the data and start rendering
     componentDidMount() {
         this.getData(this.props.userCredential.uid);
     }
 
+    // Renders individual entry by making it a li and adding it to a ul
     renderEntry(doc) {
-        // empty out the gallery first
         const memoGallery = document.querySelector('#memoGallery');
 
-        // if(!document.getElementById(doc.id)) {
-            console.log(doc.data().title);
-            let li = document.createElement('li');
-            li.id = doc.id;
-            let title = document.createElement('span');
-            
-            var d = new Date(parseInt(doc.data().time));
+        // Make li component
+        let li = document.createElement('li');
+        li.id = doc.id;
+        let title = document.createElement('span');
+        
+        // Format the string
+        var d = new Date(parseInt(doc.data().time));
+        title.textContent = "[" + d.toString() + "] " + doc.data().title + " - " + doc.data().content;
 
-            title.textContent = "[" + d.toString() + "] " + doc.data().title + " - " + doc.data().content;
-            li.appendChild(title);
-            console.log("Firstchild: " + (memoGallery.firstChild ? memoGallery.firstChild.textContent : "none"));
-            memoGallery.insertBefore(li, memoGallery.firstChild);
-        // }
+        // Add li to bigger ul
+        li.appendChild(title);
+        memoGallery.insertBefore(li, memoGallery.firstChild); // insertBefore for reverse order
     }
 
+    // Retrieve data from firestore
     getData(uid) {
-        console.log("GetData is called.");
         const db = firebase.firestore();
 
         // clear out gallery
@@ -40,7 +40,8 @@ class MemoGallery extends Component {
             memoGallery.removeChild(memoGallery.childNodes[0]);
         }
 
-        var docArray = db.collection("journals-library")
+        // Get snapshot and render each document(memoEntry)
+        db.collection("journals-library")
             .doc(uid)
             .collection("text")
             .get().then((querySnapshot) => {
@@ -52,6 +53,7 @@ class MemoGallery extends Component {
         this.render();
     }
 
+    // Template ul named "memoGallery" to be filled in by renderEntry() later
     render() { 
         
         return (
@@ -61,6 +63,6 @@ class MemoGallery extends Component {
             </div>
         );
     }
-};
+}
 
 export default MemoGallery;

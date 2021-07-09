@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import firebase from './firebase.utils';
 import MemoGallery from './MemoGallery';
 
+// Custom MemoEntry class to store information surrounding a "memo" on firestore
 class MemoEntry {
     constructor(time, title, content) {
         this.time = time;
@@ -13,23 +14,30 @@ class MemoEntry {
         return this.time + ": [" + this.title + "] " + this.content;
     }
 }
+
+// Input field to add a new memo for the user
 class NewMemoBox extends Component {
+
     constructor() {
         super();
-        this.state = {
+        this.state = { // time is given internally
             title: "",
             content: ""
         };
+
+        // have our own memoGallery for easy refreshing
         this.memoGallery = new MemoGallery();
     }
 
-    updateInput = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
+    // Keep user input updated
+    handleInputChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
+    };
 
+    // Submit memo information to firestore
     addMemo = e => {
+
+        // Converter to convert the custom MemoEntry object
         var memoEntryConverter = {
             toFirestore: function(memoEntry) {
                 return {
@@ -44,8 +52,8 @@ class NewMemoBox extends Component {
             }
         };
 
+        // Add time stamp
         const secSinceEpoch = new Date().getTime().toString();
-        const serverTimeStamp = firebase.firestore.FieldValue.serverTimestamp();
 
         e.preventDefault();
         if(this.state.title !== "" || this.state.content !== "") { // prevent empty memos
@@ -53,10 +61,10 @@ class NewMemoBox extends Component {
             const db = firebase.firestore();
             const memoEntry = new MemoEntry(
                 secSinceEpoch,
-                this.state.title === "" ? "Untitled" : this.state.title,
+                this.state.title === "" ? "Untitled" : this.state.title, // fill in empty fields
                 this.state.content === "" ? "No content" : this.state.content);
 
-            const userRef = db.collection("journals-library")
+            const _ = db.collection("journals-library")
                 .doc(this.props.userCredential.uid)
                 .collection("text")
                 .doc(secSinceEpoch)
@@ -66,14 +74,17 @@ class NewMemoBox extends Component {
 
         // Reset state value and form 
         this.setState({
+            title: "",
             content: "" 
         });
         var form = document.getElementById("add-memo-box");
         form.reset();
 
+        // refresh memo gallery to display latest memo addition
         this.memoGallery.getData(this.props.userCredential.uid);
     }
 
+    // Render input fields
     render() {
         
         return (
@@ -96,6 +107,6 @@ class NewMemoBox extends Component {
             </div>
         );
     }
-};
+}
 
 export default NewMemoBox;

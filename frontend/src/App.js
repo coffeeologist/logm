@@ -5,45 +5,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
+    // Keeps track of authentication details
     state = {
         authenticated: false,
         userCredential: null
     };
 
- componentDidMount() {
-//    firebase.auth().onAuthStateChanged((authenticated) => {
-//      authenticated
-//        ? this.setState(() => ({
-//            authenticated: true,
-//          }))
-//        : this.setState(() => ({
-//            authenticated: false,
-//          }));
-//    });
-    console.log(this.state.authenticated);
-   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        // User is signed in.
-        // this.setState(() => ({
-        //     authenticated: true,
-        //     userCredential: user
-        // }))
-       this.setState(() => ({
-           authenticated: true,
-           userCredential: user
-         }))
-        console.log(this.state.authenticated);
+    componentDidMount() {
+        // Change authentication state accordingly
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState(() => ({
+                    authenticated: true,
+                    userCredential: user
+                }))
+            }
+            else {
+                this.setState(() => ({
+                    authenticated: false,
+                    userCredential: null
+                }))
+            }
+        });
     }
-    else {
-        this.setState(() => ({
-            authenticated: false,
-            userCredential: null
-        }))
+
+    // Render the navigation bar that will handle/differentiate between authenticated vs not users
+    render() {
+        return <Navigation authenticated={this.state.authenticated} userCredential={this.state.userCredential} />;
     }
-    });
- }
- render() {
-   return <Navigation authenticated={this.state.authenticated} userCredential={this.state.userCredential} />;
- }
 }
+
 export default App;
