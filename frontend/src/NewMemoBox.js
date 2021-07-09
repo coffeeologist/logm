@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from './firebase.utils';
+import MemoGallery from './MemoGallery';
 
 class MemoEntry {
     constructor(time, title, content) {
@@ -19,6 +20,7 @@ class NewMemoBox extends Component {
             title: "",
             content: ""
         };
+        this.memoGallery = new MemoGallery();
     }
 
     updateInput = e => {
@@ -43,14 +45,14 @@ class NewMemoBox extends Component {
         };
 
         const secSinceEpoch = new Date().getTime().toString();
-        const serverTimeStamp = firebase.firestore.FieldValue.serverTimestamp;
+        const serverTimeStamp = firebase.firestore.FieldValue.serverTimestamp();
 
         e.preventDefault();
         if(this.state.title !== "" || this.state.content !== "") { // prevent empty memos
 
             const db = firebase.firestore();
             const memoEntry = new MemoEntry(
-                serverTimeStamp,
+                secSinceEpoch,
                 this.state.title === "" ? "Untitled" : this.state.title,
                 this.state.content === "" ? "No content" : this.state.content);
 
@@ -68,6 +70,8 @@ class NewMemoBox extends Component {
         });
         var form = document.getElementById("add-memo-box");
         form.reset();
+
+        this.memoGallery.getData(this.props.userCredential.uid);
     }
 
     render() {
