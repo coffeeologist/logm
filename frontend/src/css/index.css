@@ -1,12 +1,5 @@
-:root {
-  --dark-green: #6B705C;
-  --medium-green: #A5A58D;
-  --light-green: #B7B7A4;
-  --off-white: #FFE8D6;
-  --light-peach: #DDBEA9;
-  --medium-peach: #CB997E;
-  --dark-peach: #8A6754;
-}
+@import "Colors.css";
+@import "Login.css";
 
 body {
   margin: 0;
@@ -33,149 +26,19 @@ body, html, #root, .app, .container {
   line-height: 1;
 }
 
-#filler-for-error-message {
-  color: var(--off-white);
-  width: 80%;
-  line-height: 1;
-}
-
 a {
-   color: var(--light-peach) !important;
-   text-decoration: underline !important;
-   /* text-decoration: none; */
- }
+  color: var(--light-peach) !important;
+  text-decoration: underline !important;
+}
  
- a:hover,
- a:focus,
- a.active {
-   color: var(--dark-peach) !important;
-   text-decoration: none  !important;
- }
-
-.login-vertical-align-middle {
-  align-items: center;
-  vertical-align: middle;
-  position: relative;
-  top: 7%;
-  width: 100%;
-  /* display:block;
-  margin:auto; */
-}
-
-#login-center-island {
-  background-size:100%; 
-  /* background-color: white; */
-  align-items: center;
-  vertical-align: middle;
-}
-
-#login-form-title {
-  color: var(--dark-peach);
-  margin: 0;
-  padding:0;
-}
-
-#login-logo {
-  width:65%;
-  height:auto;
-  display:block;
-  margin:auto;
-}
-
-#login-form {
-  width:80%;
-  background-color: transparent;
-}
-
-#login-form-email, #login-form-password {
-  background-color:  transparent;
-
-  border-radius: 0;
-  border-width: 0 0 3px 0;
-  border-style: solid solid solid solid;
-  border-color: var(--medium-peach);
-  padding: 0;
-
-  color: var(--dark-peach);
-}
-
-#login-form-email::placeholder, #login-form-password::placeholder {
-  color: var(--light-peach);
-}
-
-#login-form-email:active, #login-form-password:active {
+a:hover,
+a:focus,
+a.active {
   color: var(--dark-peach) !important;
-  border-width: 0 0 3px 0 !important;
+  text-decoration: none  !important;
 }
 
-#login-form-button {
-  width:100%;
-  background-color: var(--medium-peach);
-  border-color: var(--medium-peach);
-  color: var(--off-white)
-}
-
-#login-form-alternate-provider-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  display:inline-block;
-  text-align: center;
-  width: fit-content;
-}
-
-
-#login-form-alternate-provider-icon {
-  /* width: 15%; */
-  width: 40px;
-  padding: 0;
-  margin: 0;
-  /* display: block; */
-}
-
-#login-form-text {
-  color: var(--light-peach);
-  vertical-align: middle;
-  margin-top:2%;
-  margin-right:3%;
-}
-
-#login-decoration-1 {
-  height: 700px;
-  margin-top:-1000px;
-  margin-left:-135px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  display: inline-block;
-}
-
-#login-decoration-2 {
-  height: 700px;
-  margin-top:-1200px;
-  margin-left:-220px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  display: inline-block;
-}
-
-#login-decoration-3 {
-  height: 700px;
-  margin-top:-1000px;
-  margin-left:1110px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  display: inline-block;
-}
-
-#login-decoration-4 {
-  height: 700px;
-  margin-top:-1400px;
-  margin-left: 1185px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  display: inline-block;
-}
-
+/* Remove blue border around focused/clicked buttons and input fields */
 textarea:hover, 
 input:hover, 
 textarea:active, 
@@ -193,55 +56,3 @@ label:focus,
     -webkit-appearance:none;
     box-shadow: none !important;
 }
-/* 
-.container {
-  font-size: 28px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #282c34;
-}
-
-.loginForm {
- box-sizing: border-box;
- width: 100%;
- max-width: 400px;
- padding-left: 20px;
- padding-right: 20px;
-}
-
-.inputField {
- padding-top: 16px;
-}
-
-.input {
- box-sizing: border-box;
- outline: none;
- border: solid 2px #1189de;
- border-radius: 4px;
- color: #292929;
- width: 100%;
- padding: 12px;
- font-size: 14px;
- background: rgba(255, 255, 255, 1);
-}
-
-.submitButton {
- padding-top: 16px;
-}
-
-
-.btn {
- width: 100%;
- min-width: 280px;
- color: #565656;
- padding: 12px;
- font-size: 14px;
- font-weight: bold;
- border: solid 2px #1189de;
- border-radius: 4px;
- background: #fff;
- cursor: pointer;
-} */

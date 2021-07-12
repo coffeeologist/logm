@@ -19,9 +19,8 @@ import facebookIcon from './img/facebook_icon.png';
 import githubIcon from './img/github_icon.jpg';
 
 // Animation related
-import { bounceOutUp, bounceInDown, fadeIn } from 'react-animations';
-import { StyleSheet, css } from 'aphrodite';
- 
+import { css } from 'aphrodite';
+import { styles } from './Animation';
 
 // Login class with input fields
 class Login extends Component {
@@ -48,7 +47,6 @@ class Login extends Component {
     componentWillUnmount = e => {
         // Revert it back to normal
         document.body.style.backgroundColor = "transparent"
-
     }
 
     // Keep input form updated
@@ -79,8 +77,7 @@ class Login extends Component {
         const { email, password, error } = this.state;
         return (
             <Container className="login-vertical-align-middle">
-                <div className={css(styles.fadeIn)} id="login-center-island-wrapper">
-
+                <div className={css(styles.fadeIn_08)} id="login-center-island-wrapper"> {/* Div warpper for animation */}
                 <Row className="pt-5 pb-5 mt-5" id="login-center-island">
                     {/* Logo on the left side */}
                     <Col lg={6} className="pt-5 pb-5">
@@ -146,27 +143,5 @@ class Login extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-  bounceInDown_08: {
-    animationName: bounceInDown,
-    animationDuration: '0.8s'
-  },
-
-  bounceInDown_12: {
-    animationName: bounceInDown,
-    animationDuration: '1.2s'
-  },
-
-  bounceOutUp_08: {
-    animationname: bounceOutUp,
-    animationDuration: '0.8s'
-  },
-
-  fadeIn_08: {
-    animationName: fadeIn,
-    animationDuration: '0.8s'
-  }
-})
 
 export default withRouter(Login);

@@ -1,0 +1,119 @@
+/* CSS for various things on the Login page */
+
+.login-vertical-align-middle {
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  top: 7%;
+  width: 100%;
+}
+
+#login-center-island {
+  background-size:100%; 
+  align-items: center;
+  vertical-align: middle;
+}
+
+#login-form-title {
+  color: var(--dark-peach);
+  margin: 0;
+  padding:0;
+}
+
+#login-logo {
+  width:65%;
+  height:auto;
+  display:block;
+  margin:auto;
+}
+
+#login-form {
+  width:80%;
+  background-color: transparent;
+}
+
+#login-form-email, #login-form-password {
+  background-color:  transparent;
+
+  border-radius: 0;
+  border-width: 0 0 3px 0;
+  border-style: solid solid solid solid;
+  border-color: var(--medium-peach);
+  padding: 0;
+
+  color: var(--dark-peach);
+}
+
+#login-form-email::placeholder, #login-form-password::placeholder {
+  color: var(--light-peach);
+}
+
+#login-form-email:active, #login-form-password:active {
+  color: var(--dark-peach) !important;
+  border-width: 0 0 3px 0 !important;
+}
+
+#login-form-button {
+  width:100%;
+  background-color: var(--medium-peach);
+  border-color: var(--medium-peach);
+  color: var(--off-white)
+}
+
+#login-form-alternate-provider-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display:inline-block;
+  text-align: center;
+  width: fit-content;
+}
+
+#login-form-alternate-provider-icon {
+  width: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+#login-form-text {
+  color: var(--light-peach);
+  vertical-align: middle;
+  margin-top:2%;
+  margin-right:3%;
+}
+
+#login-decoration-1 {
+  height: 700px;
+  margin-top:-1000px;
+  margin-left:-135px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#login-decoration-2 {
+  height: 700px;
+  margin-top:-1200px;
+  margin-left:-220px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#login-decoration-3 {
+  height: 700px;
+  margin-top:-1000px;
+  margin-left:1110px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#login-decoration-4 {
+  height: 700px;
+  margin-top:-1400px;
+  margin-left: 1185px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
