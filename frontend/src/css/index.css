@@ -1,3 +1,13 @@
+:root {
+  --dark-green: #6B705C;
+  --medium-green: #A5A58D;
+  --light-green: #B7B7A4;
+  --off-white: #FFE8D6;
+  --light-peach: #DDBEA9;
+  --medium-peach: #CB997E;
+  --dark-peach: #8A6754;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,6 +28,107 @@ body, html, #root, .app, .container {
 }
 
 
+.login-vertical-align-middle {
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  top: 15%;
+  width: 100%;
+  /* display:block;
+  margin:auto; */
+}
+
+#login-center-island {
+  background-size:100%; 
+  /* background-color: white; */
+  align-items: center;
+  vertical-align: middle;
+}
+
+#login-logo {
+  width:65%;
+  height:auto;
+  display:block;
+  margin:auto;
+}
+
+#login-form {
+  width:80%;
+  background-color: transparent;
+}
+
+#login-form-email, #login-form-password {
+  background-color:  transparent;
+
+  border-radius: 0;
+  border-width: 0 0 3px 0;
+  border-style: solid solid solid solid;
+  border-color: var(--medium-peach);
+  padding: 0;
+
+  color: var(--dark-peach);
+}
+
+#login-form-email::placeholder, #login-form-password::placeholder {
+  color: var(--light-peach);
+}
+
+#login-form-email:active, #login-form-password:active {
+  color: var(--dark-peach) !important;
+  border-width: 0 0 3px 0 !important;
+}
+
+#login-form-button {
+  width:100%;
+  background-color: var(--medium-peach);
+  border-color: var(--medium-peach);
+  color: var(--off-white)
+}
+
+#login-form-alternate-provider-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display:inline-block;
+  text-align: center;
+  width: fit-content;
+}
+
+
+#login-form-alternate-provider-icon {
+  /* width: 15%; */
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  /* display: block; */
+}
+
+#login-form-text {
+  color: var(--light-peach);
+  vertical-align: middle;
+  margin-top:2%;
+  margin-right:3%;
+}
+
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+/* 
 .container {
   font-size: 28px;
   color: #fff;
@@ -68,4 +179,4 @@ body, html, #root, .app, .container {
  border-radius: 4px;
  background: #fff;
  cursor: pointer;
-}
+} */
