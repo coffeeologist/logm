@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import firebase from './firebase.utils';
 import { signInWithGoogle } from './firebase.utils.js';
 
@@ -72,16 +72,15 @@ class Login extends Component {
 
                     {/* Logo on the left side */}
                     <Col lg={6} className="pt-5 pb-5">
-                        <Image className="pt-5 pb-5 pl-5" id="login-logo" src={logo} fluid />
+                        <NavLink to="/home">
+                            <Image className="pt-5 pb-5 pl-5" id="login-logo" src={logo} fluid />
+                        </NavLink>
                     </Col>
 
                     {/* Input form on the right side */}
                     <Col lg={6} className="pt-5 pb-5">
-                        <h1 className="">Log In</h1>
                         <Row>
-                            {error ? (
-                                <p>{error.message}</p>
-                            ) : null}
+                            <h1 className="mb-1" id="login-form-title">Log In</h1>
                         </Row>
                         <Row>
                             <Form id="login-form" onSubmit={this.handleFormSubmit}>
@@ -91,13 +90,26 @@ class Login extends Component {
                                 <Form.Group>
                                     <Form.Control type="password" name="password" value={password} placeholder="Enter password" size="lg" id="login-form-password" onChange={this.handleInputChange} />
                                 </Form.Group>
+
+                                {/* Log in button */}
                                 <Button className="mb-1" type="submit" id="login-form-button" size="lg" children="Log In" />
                             </Form>
                         </Row>
+
+                        {/* error in loggin in */}
+                        {/* TODO : case on error type to give better error message */}
+                        <Row>
+                            {error ? (
+                                <p className="error-message">{error.message}</p>
+                            ) : null}
+                        </Row>
+
                         <Row id="login-form-alternate-provider">
                             {/* Separate sign in functionality with google account */}
                             {/* <Image /> */}
-                            <p id="login-form-text"> Or login with </p>
+                            <p id="login-form-text">
+                                <NavLink to="/register" >Sign up</NavLink> 
+                                &nbsp; or login with </p>
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="login-form-alternate-provider-button">
                                 <Image src={googleIcon} id="login-form-alternate-provider-icon" roundedCircle/>
                             </Button>
