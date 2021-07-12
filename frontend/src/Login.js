@@ -11,10 +11,17 @@ import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+// import images
 import logo from './img/logo_dark.png';
+import loginDecoration from './img/login_page_decoration.png';
 import googleIcon from './img/google_icon.png';
 import facebookIcon from './img/facebook_icon.png';
 import githubIcon from './img/github_icon.jpg';
+
+// Animation related
+import { bounceOutUp, bounceInDown, fadeIn } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
+ 
 
 // Login class with input fields
 class Login extends Component {
@@ -30,10 +37,9 @@ class Login extends Component {
     componentDidMount = e => {
         // Change background splash
         document.body.style.backgroundColor = "#6B705C"
-        // document.body.style.backgroundSize = "120%";
-        // document.body.style.backgroundPosition = "center";
-        // document.body.style.backgroundRepeat = "repeat-x";
         document.body.style.overflow = "hidden";
+
+        // Add background for center island
         document.getElementById("login-center-island").style.backgroundImage = "url(https://raw.githubusercontent.com/coffeeologist/logm/main/frontend/src/img/center_background.png)";
         document.getElementById("login-center-island").style.backgroundRepeat = "repeat-x";
         document.getElementById("login-center-island").style.backgroundPosition = "center";
@@ -41,8 +47,8 @@ class Login extends Component {
 
     componentWillUnmount = e => {
         // Revert it back to normal
-        // document.body.style.backgroundImage = "none";
         document.body.style.backgroundColor = "transparent"
+
     }
 
     // Keep input form updated
@@ -61,6 +67,11 @@ class Login extends Component {
             .signInWithEmailAndPassword(email, password)
             .then((user) => { this.props.history.push('/'); })
             .catch((error) => { this.setState({ error: error }); });
+
+        // TODO: need to figure out how to delay unmounting
+        // if(!this.state.error) {
+        //     document.getElementById("login-decoration-1").className = css(styles.bounceOutUp_08);
+        // }
     };
 
     // Render input form
@@ -68,8 +79,9 @@ class Login extends Component {
         const { email, password, error } = this.state;
         return (
             <Container className="login-vertical-align-middle">
-                <Row className="pt-5 pb-5 mt-5" id="login-center-island">
+                <div className={css(styles.fadeIn)} id="login-center-island-wrapper">
 
+                <Row className="pt-5 pb-5 mt-5" id="login-center-island">
                     {/* Logo on the left side */}
                     <Col lg={6} className="pt-5 pb-5">
                         <NavLink to="/home">
@@ -80,7 +92,7 @@ class Login extends Component {
                     {/* Input form on the right side */}
                     <Col lg={6} className="pt-5 pb-5">
                         <Row>
-                            <h1 className="mb-1" id="login-form-title">Log In</h1>
+                            <h1 className="mb-2 css" id="login-form-title">Log In</h1>
                         </Row>
                         <Row>
                             <Form id="login-form" onSubmit={this.handleFormSubmit}>
@@ -121,11 +133,40 @@ class Login extends Component {
                             </Button>
                         </Row>
 
-                    </Col>
+                    </Col>  
                 </Row>
+                </div>
+
+                {/* Decorations */}
+                <Image className={css(styles.bounceInDown_08)} id="login-decoration-1" src={loginDecoration} />
+                <Image className={css(styles.bounceInDown_12)} id="login-decoration-2" src={loginDecoration} />
+                <Image className={css(styles.bounceInDown_08)} id="login-decoration-3" src={loginDecoration} />
+                <Image className={css(styles.bounceInDown_12)} id="login-decoration-4" src={loginDecoration} />
             </Container>
         );
     }
 }
+
+const styles = StyleSheet.create({
+  bounceInDown_08: {
+    animationName: bounceInDown,
+    animationDuration: '0.8s'
+  },
+
+  bounceInDown_12: {
+    animationName: bounceInDown,
+    animationDuration: '1.2s'
+  },
+
+  bounceOutUp_08: {
+    animationname: bounceOutUp,
+    animationDuration: '0.8s'
+  },
+
+  fadeIn_08: {
+    animationName: fadeIn,
+    animationDuration: '0.8s'
+  }
+})
 
 export default withRouter(Login);

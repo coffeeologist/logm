@@ -140,6 +140,41 @@ a {
   margin-right:3%;
 }
 
+#login-decoration-1 {
+  height: 700px;
+  margin-top:-1000px;
+  margin-left:-135px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#login-decoration-2 {
+  height: 700px;
+  margin-top:-1200px;
+  margin-left:-220px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#login-decoration-3 {
+  height: 700px;
+  margin-top:-1000px;
+  margin-left:1110px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#login-decoration-4 {
+  height: 700px;
+  margin-top:-1400px;
+  margin-left: 1185px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
 
 textarea:hover, 
 input:hover, 
