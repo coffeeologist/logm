@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import firebase from './firebase.utils';
-import { signInWithGoogle } from './firebase.utils.js';
+import { signInWithGoogle, signInWithGithub } from './firebase.utils.js';
 
 // React bootstrap for formatting
 import Container from 'react-bootstrap/Container';
@@ -122,10 +122,10 @@ class Login extends Component {
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="login-form-alternate-provider-button">
                                 <Image src={googleIcon} id="login-form-alternate-provider-icon" roundedCircle/>
                             </Button>
-                            <Button onClick={signInWithGoogle} className="mx-1" id="login-form-alternate-provider-button">
+                            {/* <Button onClick={signInWithGoogle} className="mx-1" id="login-form-alternate-provider-button">
                                 <Image src={facebookIcon} id="login-form-alternate-provider-icon" roundedCircle/>
-                            </Button>
-                            <Button onClick={signInWithGoogle} className="mx-1" id="login-form-alternate-provider-button">
+                            </Button> */}
+                            <Button onClick={signInWithGithub} className="mx-1" id="login-form-alternate-provider-button">
                                 <Image src={githubIcon} id="login-form-alternate-provider-icon" roundedCircle/>
                             </Button>
                         </Row>
