@@ -1,8 +1,9 @@
 /* Variable names for different colors in the theme palette */
+
 :root {
   --dark-green: #6B705C;
   --medium-green: #A5A58D;
-  --light-green: #B7B7A4;
+  --light-green: #ccccb6;
   --off-white: #FFE8D6;
   --light-peach: #DDBEA9;
   --medium-peach: #CB997E;

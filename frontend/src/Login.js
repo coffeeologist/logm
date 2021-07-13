@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 
 // import images
 import logo from './img/logo_dark.png';
-import loginDecoration from './img/login_page_decoration.png';
+import decoration from './img/login_page_decoration.png';
 import googleIcon from './img/google_icon.png';
 import facebookIcon from './img/facebook_icon.png';
 import githubIcon from './img/github_icon.jpg';
@@ -46,7 +46,8 @@ class Login extends Component {
 
     componentWillUnmount = e => {
         // Revert it back to normal
-        document.body.style.backgroundColor = "transparent"
+        document.body.style.backgroundColor = "transparent";
+        document.body.style.overflow = "auto";
     }
 
     // Keep input form updated
@@ -56,8 +57,6 @@ class Login extends Component {
 
     // Submit to Firebase for authentication
     handleFormSubmit = (event) => {
-        console.log("Email is:");
-        console.log(this.state.email);
         event.preventDefault();
         const { email, password } = this.state;
         firebase
@@ -94,14 +93,14 @@ class Login extends Component {
                         <Row>
                             <Form id="login-form" onSubmit={this.handleFormSubmit}>
                                 <Form.Group>
-                                    <Form.Control type="email" name="email" value={email} placeholder="Enter email" size="lg" id="login-form-email" onChange={this.handleInputChange} />
+                                    <Form.Control type="email" name="email" value={email} placeholder="Enter email" id="login-form-email" onChange={this.handleInputChange} />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Control type="password" name="password" value={password} placeholder="Enter password" size="lg" id="login-form-password" onChange={this.handleInputChange} />
+                                    <Form.Control type="password" name="password" value={password} placeholder="Enter password" id="login-form-password" onChange={this.handleInputChange} />
                                 </Form.Group>
 
                                 {/* Log in button */}
-                                <Button className="mb-1" type="submit" id="login-form-button" size="lg" children="Log In" />
+                                <Button className="mb-1" type="submit" id="login-form-button" children="Log In" />
                             </Form>
                         </Row>
 
@@ -109,7 +108,7 @@ class Login extends Component {
                         {/* TODO : case on error type to give better error message */}
                         <Row>
                             {error ? (
-                                <p className="error-message">{error.message}</p>
+                                <p id="login-error-message">{error.message}</p>
                             ) : null}
                         </Row>
 
@@ -117,7 +116,7 @@ class Login extends Component {
                             {/* Separate sign in functionality with google account */}
                             {/* <Image /> */}
                             <p id="login-form-text">
-                                <NavLink to="/register" >Sign up</NavLink> 
+                                <NavLink to="/register" id="login-redirect" >Sign up</NavLink> 
                                 &nbsp; or login with </p>
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="login-form-alternate-provider-button">
                                 <Image src={googleIcon} id="login-form-alternate-provider-icon" roundedCircle/>
@@ -135,10 +134,10 @@ class Login extends Component {
                 </div>
 
                 {/* Decorations */}
-                <Image className={css(styles.bounceInDown_08)} id="login-decoration-1" src={loginDecoration} />
-                <Image className={css(styles.bounceInDown_12)} id="login-decoration-2" src={loginDecoration} />
-                <Image className={css(styles.bounceInDown_08)} id="login-decoration-3" src={loginDecoration} />
-                <Image className={css(styles.bounceInDown_12)} id="login-decoration-4" src={loginDecoration} />
+                <Image className={css(styles.bounceInDown_08)} id="login-decoration-1" src={decoration} />
+                <Image className={css(styles.bounceInDown_12)} id="login-decoration-2" src={decoration} />
+                <Image className={css(styles.bounceInDown_08)} id="login-decoration-3" src={decoration} />
+                <Image className={css(styles.bounceInDown_12)} id="login-decoration-4" src={decoration} />
             </Container>
         );
     }
