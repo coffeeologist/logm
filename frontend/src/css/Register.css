@@ -1,0 +1,137 @@
+/* CSS for various things on the register page */
+
+.register-vertical-align-middle {
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  top: 7%;
+  width: 100%;
+}
+
+#register-center-island {
+  background-size:100%; 
+  align-items: center;
+  vertical-align: middle;
+}
+
+#register-form-title {
+  color: var(--light-peach);
+  margin: 0;
+  padding:0;
+}
+
+#register-logo {
+  width:65%;
+  height:auto;
+  display:block;
+  margin:auto;
+}
+
+#register-form {
+  width:100%;
+  background-color: transparent;
+}
+
+#register-form-email, #register-form-password, #register-form-confirm-password {
+  background-color:  transparent;
+
+  border-radius: 0;
+  border-width: 0 0 3px 0;
+  border-style: solid solid solid solid;
+  border-color: var(--medium-peach);
+  padding: 0;
+
+  color: var(--off-white);
+}
+
+#register-form-email::placeholder, #register-form-password::placeholder, #register-form-confirm-password::placeholder {
+  color: var(--light-peach);
+}
+
+#register-form-email:active, #register-form-password:active, #register-form-confirm-password:active {
+  color: var(--off-white) !important;
+  border-width: 0 0 3px 0 !important;
+}
+
+#register-form-button {
+  width:100%;
+  background-color: var(--medium-peach);
+  border-color: var(--medium-peach);
+  color: var(--off-white)
+}
+
+#register-form-alternate-provider-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display:inline-block;
+  text-align: center;
+  width: fit-content;
+}
+
+#register-form-alternate-provider-icon {
+  width: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+#register-form-text {
+  color: var(--light-peach);
+  vertical-align: middle;
+  margin-top:2%;
+  margin-right:3%;
+}
+
+#register-decoration-1 {
+  height: 700px;
+  margin-top:-1000px;
+  margin-left:-135px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#register-decoration-2 {
+  height: 700px;
+  margin-top:-1200px;
+  margin-left:-220px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#register-decoration-3 {
+  height: 700px;
+  margin-top:-1000px;
+  margin-left:1110px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#register-decoration-4 {
+  height: 700px;
+  margin-top:-1400px;
+  margin-left: 1185px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+#register-redirect {
+  color: var(--light-peach) !important;
+  text-decoration: underline !important;
+}
+ 
+#register-redirect:hover,
+#register-redirect:focus,
+#register-redirect.active {
+  color: var(--off-white) !important;
+  text-decoration: none  !important;
+}
+
+#register-error-message {
+  color: red;
+  width:100%;
+  line-height: 1;
+}

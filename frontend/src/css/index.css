@@ -1,5 +1,6 @@
 @import "Colors.css";
 @import "Login.css";
+@import "Register.css";
 
 body {
   margin: 0;
@@ -20,23 +21,6 @@ body, html, #root, .app, .container {
   height: 100%;
 }
 
-.error-message {
-  color: red;
-  width:80%;
-  line-height: 1;
-}
-
-a {
-  color: var(--light-peach) !important;
-  text-decoration: underline !important;
-}
- 
-a:hover,
-a:focus,
-a.active {
-  color: var(--dark-peach) !important;
-  text-decoration: none  !important;
-}
 
 /* Remove blue border around focused/clicked buttons and input fields */
 textarea:hover, 
