@@ -94,13 +94,13 @@ class NewMemoBox extends Component {
                      type="text"
                      name="title"
                      placeholder="Memo title"
-                     onChange={this.updateInput}
+                     onChange={this.handleInputChange}
                     />
                     <input 
                      type="text"
                      name="content"
                      placeholder="Type your memo here"
-                     onChange={this.updateInput}
+                     onChange={this.handleInputChange}
                     />
                     <input type="submit" value="Submit"></input>
                 </form>

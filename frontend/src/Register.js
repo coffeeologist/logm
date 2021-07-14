@@ -64,7 +64,7 @@ class Register extends Component {
         }
         firebase
             .auth()
-            .signInWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(email, password)
             .then((user) => { this.props.history.push('/'); })
             .catch((error) => { this.setState({ error: error }); });
 
