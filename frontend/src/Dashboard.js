@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import NewMemoBox from './NewMemoBox';
-import MemoGallery from './MemoGallery';
 
 // Main dashboard for each user
 class Dashboard extends Component {
@@ -13,7 +12,6 @@ class Dashboard extends Component {
             <div>uid: {this.props.userCredential.uid}</div>
 
             <NewMemoBox userCredential={this.props.userCredential} />
-            <MemoGallery userCredential={this.props.userCredential} />
         </div>
     );
     }

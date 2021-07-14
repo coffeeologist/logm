@@ -1,6 +1,7 @@
 @import "Colors.css";
 @import "Login.css";
 @import "Register.css";
+@import "MemoGallery.css";
 
 body {
   margin: 0;
