@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import NewMemoBox from './NewMemoBox';
+import { withRouter, NavLink } from 'react-router-dom';
+import LogOut from './LogOut';
 
 // Main dashboard for each user
 class Dashboard extends Component {
@@ -10,6 +12,7 @@ class Dashboard extends Component {
             <div>Logged in?: {this.props.authenticated.toString()} |</div>
             <div>Logged in with email address: {this.props.userCredential.email}</div>
             <div>uid: {this.props.userCredential.uid}</div>
+            <LogOut/>
 
             <NewMemoBox userCredential={this.props.userCredential} />
         </div>
@@ -17,4 +20,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Home from './Home';
+import GeneralNavigation from './GeneralNavigation';
 import firebase from './firebase.utils';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,7 +31,7 @@ class App extends Component {
 
     // Render the navigation bar that will handle/differentiate between authenticated vs not users
     render() {
-        return <Home authenticated={this.state.authenticated} userCredential={this.state.userCredential} />
+        return <GeneralNavigation authenticated={this.state.authenticated} userCredential={this.state.userCredential} />
     }
 }
 

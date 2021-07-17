@@ -3,28 +3,27 @@ import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-do
 import Login from './Login';
 import Register from './Register';
 import Dashboard from './Dashboard';
+import HomePage from './HomePage';
 import ProtectedRoute from './ProtectedRoute';
 import ReverseProtectedRoute from './ReverseProtectedRoute';
-import Navigation from './Navigation';
+import ProtectedNavigation from './ProtectedNavigation';
 
-class Home extends Component {
-
+class GeneralNavigation extends Component {
     // home page accessible to both normal users and logged in users
     render() { 
         return(
-        <Router>
         <div>
-            <Navigation authenticated={this.props.authenticated} userCredential={this.props.userCredential} />
-        </div>
-
+        <Router>
         {/* Routes and redirects to different paths */}
         <Switch>
             <ReverseProtectedRoute authenticated={this.props.authenticated} path="/login" component={Login} />
             <ReverseProtectedRoute authenticated={this.props.authenticated} path="/register" component={Register} />
-            <ProtectedRoute authenticated={this.props.authenticated} userCredential={this.props.userCredential} path="/dashboard" component={Dashboard} />
+            <ProtectedRoute authenticated={this.props.authenticated} userCredential={this.props.userCredential} path="/dashboard" component={ProtectedNavigation} />
+            <Route authenticated={this.props.authenticated} path="/" component={HomePage} />
         </Switch>
         </Router>
+        </div>
     );} 
 }
 
-export default Home;
+export default GeneralNavigation;

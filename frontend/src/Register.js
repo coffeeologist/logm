@@ -42,10 +42,10 @@ class Register extends Component {
         document.getElementById("register-center-island").style.backgroundPosition = "center";
 
         // Disable the menu sidebar option
-        document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
-        document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
-        document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
-        document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
+        // document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
+        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
+        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
+        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
     }
 
     componentWillUnmount = e => {
@@ -54,10 +54,10 @@ class Register extends Component {
         document.body.style.overflow = "auto";
 
         // Reset the menu sidebar
-        document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
-        document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
-        document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
-        document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
+        // document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
+        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
+        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
+        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
     }
 
     // Keep input form updated
@@ -145,7 +145,7 @@ class Register extends Component {
 
                     {/* Logo on the right side */}
                     <Col lg={6} className="pt-5 pb-5">
-                        <NavLink to="/home">
+                        <NavLink to="/dashboard">
                             <Image className="pt-5 pb-5 pr-3" id="register-logo" src={logo} fluid />
                         </NavLink>
                     </Col>

@@ -44,10 +44,10 @@ class Login extends Component {
         document.getElementById("login-center-island").style.backgroundPosition = "center";
 
         // Disable the menu sidebar option
-        document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
-        document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
-        document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
-        document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
+        // document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
+        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
+        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
+        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
     }
 
     componentWillUnmount = e => {
@@ -56,10 +56,10 @@ class Login extends Component {
         document.body.style.overflow = "auto";
 
         // Reset the menu sidebar
-        document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
-        document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
-        document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
-        document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
+        // document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
+        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
+        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
+        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
     }
 
     // Keep input form updated
@@ -74,7 +74,7 @@ class Login extends Component {
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then((user) => { this.props.history.push('/'); })
+            .then((user) => { this.props.history.push('/dashboard'); })
             .catch((error) => { this.setState({ error: error }); });
 
         // TODO: need to figure out how to delay unmounting
@@ -92,7 +92,7 @@ class Login extends Component {
                 <Row className="pt-5 pb-5 mt-5" id="login-center-island">
                     {/* Logo on the left side */}
                     <Col lg={6} className="pt-5 pb-5">
-                        <NavLink to="/home">
+                        <NavLink to="/">
                             <Image className="pt-5 pb-5 pl-5" id="login-logo" src={logo} fluid />
                         </NavLink>
                     </Col>
