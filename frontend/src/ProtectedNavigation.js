@@ -19,14 +19,42 @@ class ProtectedNavigation extends Component {
   }
 
     render() {
+        const items = [
+          <a key="0" href="">
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+            <span>Favorites</span>
+          </a>,
+          <a key="1" href="">
+            <i className="fa fa-fw fa-bell-o" />
+            <span>Alerts</span>
+          </a>,
+          <a key="2" href="">
+            <i className="fa fa-fw fa-envelope-o" />
+            <span>Messages</span>
+          </a>,
+          <a key="3" href="">
+            <i className="fa fa-fw fa-comment-o" />
+            <span>Comments</span>
+          </a>,
+          <a key="4" href="">
+            <i className="fa fa-fw fa-bar-chart-o" />
+            <span>Analytics</span>
+          </a>,
+          <a key="5" href="">
+            <i className="fa fa-fw fa-newspaper-o" />
+            <span>Reading List</span>
+          </a>
+        ];
         return (
+            
         <div>
         <Router>
-            <Menu  id="navigation-sidebar">
-                <a id="home" className="menu-item" href="/">Home</a>
+            <Menu disableAutoFocus id="navigation-sidebar">
+                {/* <a id="home" className="menu-item" href="/">Home</a>
                 <a id="about" className="menu-item" href="/about">About</a>
                 <a id="contact" className="menu-item" href="/contact">Contact</a>
-                <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+                <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
+                {items}
             </Menu>
         <div>
         </div>
