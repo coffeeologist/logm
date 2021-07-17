@@ -42,12 +42,24 @@ class Login extends Component {
         document.getElementById("login-center-island").style.backgroundImage = "url(https://raw.githubusercontent.com/coffeeologist/logm/main/frontend/src/img/center_background.png)";
         document.getElementById("login-center-island").style.backgroundRepeat = "repeat-x";
         document.getElementById("login-center-island").style.backgroundPosition = "center";
+
+        // Disable the menu sidebar option
+        document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
+        document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
+        document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
+        document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
     }
 
     componentWillUnmount = e => {
         // Revert it back to normal
         document.body.style.backgroundColor = "transparent";
         document.body.style.overflow = "auto";
+
+        // Reset the menu sidebar
+        document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
+        document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
+        document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
+        document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
     }
 
     // Keep input form updated

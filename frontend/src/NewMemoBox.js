@@ -90,11 +90,15 @@ class NewMemoBox extends Component {
         dummy.textContent = " ";
         dummy.id = "dummy";
         var gallery = document.querySelector(".grid");
+        if(!gallery.firstChild) {
+            gallery.appendChild(dummy);
+        }
         gallery.insertBefore(dummy, gallery.firstChild)
         this.state.memosArray.unshift(props);
+        this.setState({memosArray:this.state.memosArray});
 
         // Give the new card a chance to load beofre removing the dummy, faking an "animation"
-        setTimeout(()=>{gallery.removeChild(dummy)}, 50);
+        setTimeout(()=>{gallery.removeChild(dummy)}, 100);
     }
 
     // Once the component mounts, get the data and start rendering
@@ -112,11 +116,13 @@ class NewMemoBox extends Component {
             .get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     console.log(doc.id, " => ", doc.data());
+                    var data = doc.data();
+                    this.renderNewCard(data.secSinceEpoch, data.title, data.content);
                     // console.log()
-                    this.state.memosArray.unshift(doc.data());
-                    console.log("MemosArray=");
-                    this.setState({memosArray:this.state.memosArray});
-                    console.log(this.state.memosArray.length);
+                    // this.state.memosArray.unshift(doc.data());
+                    // console.log("MemosArray=");
+                    // this.setState({memosArray:this.state.memosArray});
+                    // console.log(this.state.memosArray.length);
                 });
             });
         
@@ -127,7 +133,7 @@ class NewMemoBox extends Component {
     // Render input fields
     render() {
         
-        if(this.state.memosArray.length < 1) {
+        if(this.state.memosArray.length < 0) {
 
             return(<span>Loading...</span>);
         } else {

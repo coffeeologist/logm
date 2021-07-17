@@ -2,6 +2,7 @@
 @import "Login.css";
 @import "Register.css";
 @import "MemoGallery.css";
+@import "Navigation.css";
 
 body {
   margin: 0;
