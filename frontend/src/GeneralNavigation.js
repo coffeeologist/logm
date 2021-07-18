@@ -17,9 +17,8 @@ class GeneralNavigation extends Component {
         <Switch>
             <ReverseProtectedRoute authenticated={this.props.authenticated} path="/login" component={Login} />
             <ReverseProtectedRoute authenticated={this.props.authenticated} path="/register" component={Register} />
-            <Route authenticated={this.props.authenticated} path="/" component={HomePage} />
-            {/* Direct to the ProtectedRoute set of pages */}
             <ProtectedRoute authenticated={this.props.authenticated} userCredential={this.props.userCredential} path="/dashboard" component={ProtectedNavigation} />
+            <Route authenticated={this.props.authenticated} path="/" component={HomePage} />
         </Switch>
         </Router>
         </div>
