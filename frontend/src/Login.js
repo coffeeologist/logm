@@ -61,7 +61,10 @@ class Login extends Component {
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then((user) => { this.props.history.push('/dashboard'); })
+            .then((user) => { 
+                localStorage.setItem('isAuth', true);
+                console.log("LOGIN PAGE JUST ET THE LOCALSTORAGE TO BE TRUE.");
+                this.props.history.push('/dashboard'); })
             .catch((error) => { this.setState({ error: error }); });
 
         // TODO: need to figure out how to delay unmounting
