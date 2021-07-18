@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter, NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu'
+import Image from 'react-bootstrap/Image';
 
 // Import each component
 import HomePage from './HomePage';
@@ -10,35 +11,29 @@ import Dashboard from './Dashboard';
 import ProtectedRoute from './ProtectedRoute';
 import ReverseProtectedRoute from './ReverseProtectedRoute';
 
+import lightIcon from './img/logo_light_cropped.png';
+
 // Protected Navigation that's in charge of redirection authenticatoin-required pages
 class ProtectedNavigation extends Component {
 
     state = {         // List of side bar options
         items: [
-          <a key="0" href="">
-            <i class="fa fa-adjust" aria-hidden="true"></i>
-            <span>Favorites</span>
+          <a key="0" href="/dashboard">
+            <i class="fa fa-fw fa-sticky-note-o"></i>
+            <span>Memos</span>
           </a>,
-          <a key="1" href="">
-            <i className="fa fa-fw fa-bell-o" />
-            <span>Alerts</span>
+          <a key="1" href="/">
+            <i className="fa fa-fw fa-clock-o" />
+            <span>Timeline</span>
           </a>,
           <a key="2" href="">
-            <i className="fa fa-fw fa-envelope-o" />
-            <span>Messages</span>
+            <i className="fa fa-fw fa-th-large" />
+            <span>Gallery</span>
           </a>,
           <a key="3" href="">
-            <i className="fa fa-fw fa-comment-o" />
-            <span>Comments</span>
+            <i className="fa fa-fw fa-check-square-o" />
+            <span>Todo list</span>
           </a>,
-          <a key="4" href="">
-            <i className="fa fa-fw fa-bar-chart-o" />
-            <span>Analytics</span>
-          </a>,
-          <a key="5" href="">
-            <i className="fa fa-fw fa-newspaper-o" />
-            <span>Reading List</span>
-          </a>
     ]};
 
     render() {
@@ -46,8 +41,24 @@ class ProtectedNavigation extends Component {
             
         <div>
         <Router>
-            <Menu disableAutoFocus id="navigation-sidebar">
+            <Menu disableAutoFocus id="navigation-sidebar" customCrossIcon={ false }>
+                <div id="sidebar-header">
+                  <div id="sidebar-header-inner-wrapper">
+                    <Image src={lightIcon} id="sidebar-logo"/> Hi, insertName
+                  </div>
+                </div>
+
                 {this.state.items}
+
+                <div className="divider"><p></p></div>
+                <a key="4" href="/">
+                  <i className="fa fa-fw fa-home" />
+                  <span>Home</span>
+                </a>
+                <a key="5" href="/">
+                  <i className="fa fa-fw fa-sign-out" />
+                  <span>Sign out</span>
+                </a>
             </Menu>
         <div>
         </div>

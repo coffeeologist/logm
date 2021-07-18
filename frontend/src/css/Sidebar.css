@@ -14,8 +14,7 @@
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #a90000;
-  fill:#a90000
+  background: var(--off-white);
 }
 
 /* Position and sizing of clickable cross button */
@@ -40,8 +39,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
+  background: var(--dark-green);
+  /* padding: 2.5em 1.5em 0; */
   font-size: 1.15em;
 }
 
@@ -53,7 +52,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
+  /* padding: 0.8em; */
 }
 
 /* Individual item */
@@ -63,5 +62,58 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(107, 112, 92, 0.7);
+}
+
+.bm-item-list a {
+  padding: 0.8em;
+  font-family: "Nunito", serif;
+  color: var(--light-green);
+}
+
+.bm-item-list a:hover {
+  color: var(--off-white);
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bm-item-list span {
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.bm-item-list i {
+  margin-left: 30px;
+}
+
+.bm-item:focus {
+  outline: none;
+}
+
+#sidebar-header {
+  /* margin-top: 10%; */
+  background-color: var(--medium-green);
+  color: var(--off-white);
+  font-weight: 600;
+}
+
+#sidebar-header-inner-wrapper {
+  padding-top: 15%;
+  padding-bottom: 15%;
+  margin-bottom: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  font-family: "Nunito", serif;
+}
+
+#sidebar-logo {
+  width:35%;
+  height:auto;
+  margin-right: 3%;
+}
+
+.divider {
+  border-top: 7px double var(--medium-green);
+  margin-top: 5%;
 }
