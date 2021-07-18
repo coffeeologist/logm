@@ -40,24 +40,12 @@ class Register extends Component {
         document.getElementById("register-center-island").style.backgroundImage = "url(https://raw.githubusercontent.com/coffeeologist/logm/main/frontend/src/img/register_center_background.png)";
         document.getElementById("register-center-island").style.backgroundRepeat = "repeat-x";
         document.getElementById("register-center-island").style.backgroundPosition = "center";
-
-        // Disable the menu sidebar option
-        // document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
-        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
-        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
-        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
     }
 
     componentWillUnmount = e => {
         // Revert it back to normal
         document.body.style.backgroundColor = "transparent";
         document.body.style.overflow = "auto";
-
-        // Reset the menu sidebar
-        // document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
-        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
-        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
-        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
     }
 
     // Keep input form updated
@@ -126,16 +114,12 @@ class Register extends Component {
 
                         <Row id="register-form-alternate-provider" className="pl-5">
                             {/* Separate sign in functionality with google account */}
-                            {/* <Image /> */}
                             <p id="register-form-text">
                                 <NavLink to="/login" id="register-redirect" >Login</NavLink> 
                                 &nbsp; or sign up with </p>
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="register-form-alternate-provider-button">
                                 <Image src={googleIcon} id="register-form-alternate-provider-icon" roundedCircle/>
                             </Button>
-                            {/* <Button onClick={signInWithGoogle} className="mx-1" id="register-form-alternate-provider-button">
-                                <Image src={facebookIcon} id="register-form-alternate-provider-icon" roundedCircle/>
-                            </Button> */}
                             <Button onClick={signInWithGithub} className="mx-1" id="register-form-alternate-provider-button">
                                 <Image src={githubIcon} id="register-form-alternate-provider-icon" roundedCircle/>
                             </Button>

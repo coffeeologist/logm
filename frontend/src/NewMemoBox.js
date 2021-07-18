@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import firebase from './firebase.utils';
 import Grid from './MemoGrid';
 
@@ -26,7 +25,6 @@ class NewMemoBox extends Component {
             content: "",
             memosArray:[]
         };
-        // this.memoGallery = new MemoGallery()
     }
 
     // Keep user input updated
@@ -108,21 +106,14 @@ class NewMemoBox extends Component {
     }
 
     getData(uid) {
-        console.log(uid);
         const db = firebase.firestore();
         db.collection("journals-library")
             .doc(uid)
             .collection("text")
             .get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    console.log(doc.id, " => ", doc.data());
                     var data = doc.data();
                     this.renderNewCard(data.secSinceEpoch, data.title, data.content);
-                    // console.log()
-                    // this.state.memosArray.unshift(doc.data());
-                    // console.log("MemosArray=");
-                    // this.setState({memosArray:this.state.memosArray});
-                    // console.log(this.state.memosArray.length);
                 });
             });
         
@@ -134,13 +125,8 @@ class NewMemoBox extends Component {
     render() {
         
         if(this.state.memosArray.length < 0) {
-
             return(<span>Loading...</span>);
         } else {
-            // var dummy = document.querySelector("#dummy");
-            // if(dummy) {
-            //     dummy.parentElement.removeChild(dummy);
-            // }
             return (
                 <div>
                 <div>

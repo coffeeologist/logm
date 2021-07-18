@@ -2,7 +2,7 @@
 @import "Login.css";
 @import "Register.css";
 @import "MemoGallery.css";
-@import "Navigation.css";
+@import "Sidebar.css";
 
 body {
   margin: 0;

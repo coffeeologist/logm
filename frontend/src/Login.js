@@ -15,7 +15,6 @@ import Button from 'react-bootstrap/Button';
 import logo from './img/logo_dark.png';
 import decoration from './img/login_page_decoration.png';
 import googleIcon from './img/google_icon.png';
-import facebookIcon from './img/facebook_icon.png';
 import githubIcon from './img/github_icon.jpg';
 
 // Animation related
@@ -42,24 +41,12 @@ class Login extends Component {
         document.getElementById("login-center-island").style.backgroundImage = "url(https://raw.githubusercontent.com/coffeeologist/logm/main/frontend/src/img/center_background.png)";
         document.getElementById("login-center-island").style.backgroundRepeat = "repeat-x";
         document.getElementById("login-center-island").style.backgroundPosition = "center";
-
-        // Disable the menu sidebar option
-        // document.getElementById("react-burger-menu-btn").setAttribute("disabled", true);
-        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "transparent";
-        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "transparent";
-        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "transparent";
     }
 
     componentWillUnmount = e => {
         // Revert it back to normal
         document.body.style.backgroundColor = "transparent";
         document.body.style.overflow = "auto";
-
-        // Reset the menu sidebar
-        // document.getElementById("react-burger-menu-btn").removeAttribute("disabled");
-        // document.getElementsByClassName("bm-burger-bars")[0].style.background = "";
-        // document.getElementsByClassName("bm-burger-bars")[1].style.background = "";
-        // document.getElementsByClassName("bm-burger-bars")[2].style.background = "";
     }
 
     // Keep input form updated
@@ -126,16 +113,12 @@ class Login extends Component {
 
                         <Row id="login-form-alternate-provider">
                             {/* Separate sign in functionality with google account */}
-                            {/* <Image /> */}
                             <p id="login-form-text">
                                 <NavLink to="/register" id="login-redirect" >Sign up</NavLink> 
                                 &nbsp; or login with </p>
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="login-form-alternate-provider-button">
                                 <Image src={googleIcon} id="login-form-alternate-provider-icon" roundedCircle/>
                             </Button>
-                            {/* <Button onClick={signInWithGoogle} className="mx-1" id="login-form-alternate-provider-button">
-                                <Image src={facebookIcon} id="login-form-alternate-provider-icon" roundedCircle/>
-                            </Button> */}
                             <Button onClick={signInWithGithub} className="mx-1" id="login-form-alternate-provider-button">
                                 <Image src={githubIcon} id="login-form-alternate-provider-icon" roundedCircle/>
                             </Button>

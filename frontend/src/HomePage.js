@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
-import LogOut from './LogOut';
 
-
-// Animation related
-import { css } from 'aphrodite';
-import { styles } from './Animation';
-
-// Login class with input fields
+// Home page that everyone can access. 
 class HomePage extends Component {
 
-
-    // Render input form
     render() {
         return (
-                <div className={css(styles.fadeIn_08)}> {/* Div warpper for animation */}
+                <div> {/* Div warpper for animation */}
                 This is HomePage. Splash here. 
                         <NavLink to="/login">
                             Get Started
