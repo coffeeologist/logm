@@ -62,8 +62,11 @@ class Login extends Component {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((user) => { 
-                localStorage.setItem('isAuth', true);
-                console.log("LOGIN PAGE JUST ET THE LOCALSTORAGE TO BE TRUE.");
+                // Save the user credentials as local storage key value pairs
+                localStorage.setItem('authenticated', true);
+                localStorage.setItem('email', user.user.email);
+                localStorage.setItem('uid', user.user.uid);
+                // Redirect to dashboard
                 this.props.history.push('/dashboard'); })
             .catch((error) => { this.setState({ error: error }); });
 

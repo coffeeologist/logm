@@ -3,8 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 // Protected routes for pages that require authentication
 const ProtectedRoute = ({ component: Component, authenticated, userCredential, ...rest}) => {
-    var localAuth = localStorage.getItem('isAuth');
-    console.log("From ProtectedRoute: " + localAuth);
+    var localAuth = localStorage.getItem('authenticated');
     return <Route render={(props) => 
         (localAuth ? <Component userCredential={userCredential} authenticated={authenticated} {...props} /> : <Redirect to="/login" />)}
         {...rest} />;

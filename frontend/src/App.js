@@ -18,13 +18,17 @@ class App extends Component {
                 this.setState(() => ({
                     authenticated: true,
                     userCredential: user
-                }))
+                }));
+                localStorage.setItem('authenticated', true);
+                localStorage.setItem('userCredential', user);
             }
             else {
                 this.setState(() => ({
                     authenticated: false,
                     userCredential: null
                 }))
+                localStorage.removeItem('authenticated');
+                localStorage.removeItem('userCredential');
             }
         });
     }

@@ -63,7 +63,7 @@ class NewMemoBox extends Component {
                 this.state.content === "" ? "No content" : this.state.content);
 
             const _ = db.collection("journals-library")
-                .doc(this.props.userCredential.uid)
+                .doc(localStorage.getItem('uid'))
                 .collection("text")
                 .doc(secSinceEpoch)
                 .withConverter(memoEntryConverter)
@@ -101,8 +101,7 @@ class NewMemoBox extends Component {
 
     // Once the component mounts, get the data and start rendering
     componentDidMount() {
-        const uid = this.props.userCredential.uid;
-        this.getData(uid);
+        this.getData(localStorage.getItem('uid'));
     }
 
     getData(uid) {

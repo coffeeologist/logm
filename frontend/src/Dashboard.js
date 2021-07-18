@@ -7,13 +7,13 @@ import LogOut from './LogOut';
 // Main dashboard for each user
 class Dashboard extends Component {
  render() {
-    //  console.log(this.props.userCredential.uid);
     return (
         <div>
             <p>Welcome! To dashboard </p>
-            <div>Logged in?: {this.props.authenticated.toString()} |</div>
-            <div>Logged in with email address: {this.props.userCredential.email}</div>
-            <div>uid: {this.props.userCredential.uid}</div>
+            <div>Logged in?: {localStorage.getItem('authenticated').toString()} |</div>
+            <div>Logged in with email address: {localStorage.getItem('email')}</div>
+            <div>uid: {localStorage.getItem('uid')}</div>
+            <div> Insert big pretty clock here</div>
         </div>
     );
     }
