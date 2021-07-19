@@ -19,10 +19,9 @@ class Grid extends Component {
 
   render() {
     let classes = "grid";
-    console.log(this.props.memos.length);
     return (
       <div className={classes} ref={el => (this.grid = el)}>
-        {[...Array(this.props.memos.length).keys()].map(i => <MemoCard memo={this.props.memos[i]} key={i} />)}
+        {[...Array(this.props.memos.length).keys()].map(i => <MemoCard memo={this.props.memos[i]} onDelete={this.props.onDelete} key={i} />)}
       </div>
     );
   }

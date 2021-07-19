@@ -78,12 +78,37 @@ class NewMemoBox extends Component {
             title: "",
             content: "" 
         });
-        var form = document.getElementById("add-memo-box");
+        var form = document.getElementById("memos-add-box");
         form.reset();
     }
 
-    renderNewCard(sec, title, content) {
-        var props = {sec:sec, title:title, content:content};
+    deleteCard(secSinceEpoch) {
+        console.log("Attempting to delete a card");
+        console.log(secSinceEpoch);
+        // console.log(this.state.memosArray);
+        // var toDelete = -1;
+        // for(var i = 0; i < this.state.memosArray.length; i++) {
+        //     if(this.state.memosArray[i].time == secSinceEpoch) {
+        //         toDelete = i;
+        //     }
+        // }
+        // console.log("Deleting card with title: " + this.state.memosArray[toDelete].title);
+        // this.state.memosArray.splice(toDelete, 1);
+        var toDelete = document.getElementById(secSinceEpoch);
+        toDelete.remove();
+
+        
+        // remove it from firestore database
+        const db = firebase.firestore();
+        const _ = db.collection("journals-library")
+            .doc(localStorage.getItem('uid'))
+            .collection("text")
+            .doc(secSinceEpoch)
+            .delete();
+    }
+
+    renderNewCard(time, title, content) {
+        var props = {time:time, title:title, content:content};
         let dummy = document.createElement("div");
         dummy.textContent = " ";
         dummy.id = "dummy";
@@ -112,7 +137,7 @@ class NewMemoBox extends Component {
             .get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     var data = doc.data();
-                    this.renderNewCard(data.secSinceEpoch, data.title, data.content);
+                    this.renderNewCard(data.time, data.title, data.content);
                 });
             });
         
@@ -124,12 +149,30 @@ class NewMemoBox extends Component {
     render() {
         
         if(this.state.memosArray.length < 0) {
-            return(<span>Loading...</span>);
+            return(
+            <div id="memo-page">
+                <form id="memos-add-box" onSubmit={this.addMemo}>
+                    <input 
+                    type="text"
+                    name="title"
+                    placeholder="Memo title"
+                    onChange={this.handleInputChange}
+                    />
+                    <input 
+                    type="text"
+                    name="content"
+                    placeholder="Type your memo here"
+                    onChange={this.handleInputChange}
+                    />
+                    <input type="submit" value="Submit"></input>
+                </form>
+                <span>No Memos yet. Loading...</span>
+            </div>);
         } else {
             return (
+                <div id="memo-page">
                 <div>
-                <div>
-                    <form id="add-memo-box" onSubmit={this.addMemo}>
+                    <form id="memos-add-box" onSubmit={this.addMemo}>
                         <input 
                         type="text"
                         name="title"
@@ -146,7 +189,7 @@ class NewMemoBox extends Component {
                     </form>
                 </div>
                 <div id="memoGallery">
-                    <Grid memos={this.state.memosArray}/>
+                    <Grid memos={this.state.memosArray} onDelete={this.deleteCard} />
                 </div>
                 </div>
             );

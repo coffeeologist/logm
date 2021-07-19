@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
+import { format } from 'date-fns';
+
 class MemoCard extends Component {
 
-    constructor(props) {
-        super();
-        this.state = {expanded: false};
-        this.randomNumber = Math.floor(Math.random() * 5) + 1;
-        this.props = props;
-    }
+  constructor(props) {
+      super();
+      this.state = {expanded: false};
+      this.randomNumber = Math.floor(Math.random() * 5) + 1;
+      this.props = props;
+  }
 
-    // render2() {
-    //     return "<div class='memo-card memo-card--1' onClick={() => { this.setState({ expanded: !this.state.expanded }) }}>
-    //         <div>
-    //         <h1> {this.props.memo.title} </h1>
-    //         <p> {this.props.memo.content} </p>
-    //         </div>
-    //     </div>
-    //     ";
-    // }
+  removeCard() {
+    this.props.onDelete(this.props.memo.time);
+  }
+
   render() {
+    var d = new Date(parseInt(this.props.memo.time));
+    var formattedDate = format(d, "MMM do, yyyy • H:mma");
+
     return (
         <div
             className={`memo-card memo-card--${this.randomNumber} ${
@@ -26,29 +27,16 @@ class MemoCard extends Component {
             onClick={() => {
             this.setState({ expanded: !this.state.expanded });
             }}
+            id={`${this.props.memo.time}`}
         >
             <div>
-            <h1> {this.props.memo.title} </h1>
-            <p> {this.props.memo.content} </p>
+              <p className="memo-card-time-stamp"> {formattedDate} </p>
+              <i className="fa fa-times memo-card-remove-button" onClick={() => this.removeCard()}/>
+              <h4 className="memo-card-title"> {this.props.memo.title} </h4>
+              <Scrollbars id="memo-card-scrollbar" hideTracksWhenNotNeeded autoHide autoHideTimeout={0}> <p className="memo-card-content"> {this.props.memo.content} </p> </Scrollbars>
+
             </div>
         </div>
-    );
-  }
-  render2() {
-    return (
-      <div
-        className={`memo-card memo-card--${this.randomNumber} ${
-          this.state.expanded ? "memo-card--expanded" : ""
-        }`}
-        onClick={() => {
-          this.setState({ expanded: !this.state.expanded });
-        }}
-      >
-        <div>
-          <h1> {this.props.memo.title} </h1>
-          <p> {this.props.memo.content} </p>
-        </div>
-      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewMemoBox from './NewMemoBox';
+import NewMemoBox from './MemoGallery';
 import { withRouter, NavLink } from 'react-router-dom';
 
 import LogOut from './LogOut';
