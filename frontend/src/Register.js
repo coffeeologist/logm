@@ -118,10 +118,10 @@ class Register extends Component {
                                 <NavLink to="/login" id="register-redirect" >Login</NavLink> 
                                 &nbsp; or sign up with </p>
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="register-form-alternate-provider-button">
-                                <Image src={googleIcon} id="register-form-alternate-provider-icon" roundedCircle/>
+                                <i class="fa fa-google fa-2x register-form-alternate-provider-icon" aria-hidden="true"></i>
                             </Button>
                             <Button onClick={signInWithGithub} className="mx-1" id="register-form-alternate-provider-button">
-                                <Image src={githubIcon} id="register-form-alternate-provider-icon" roundedCircle/>
+                                <i class="fa fa-github fa-2x register-form-alternate-provider-icon" aria-hidden="true"></i>
                             </Button>
                         </Row>
 

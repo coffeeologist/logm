@@ -69,17 +69,18 @@
   width: fit-content;
 }
 
-#login-form-alternate-provider-icon {
+.login-form-alternate-provider-icon {
   width: 30px;
   padding: 0;
   margin: 0;
+  color: var(--medium-peach);
 }
 
 #login-form-text {
   color: var(--light-peach);
   vertical-align: middle;
   margin-top:2%;
-  margin-right:3%;
+  margin-right:2%;
 }
 
 #login-decoration-1 {
