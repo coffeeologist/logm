@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import firebase from './firebase.utils';
 import Grid from './MemoGrid';
 
+import ReactDom from 'react-dom';
+import Popup from 'react-popup';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import icon from './img/memo_add_icon.PNG';
+
 // Custom MemoEntry class to store information surrounding a "memo" on firestore
 class MemoEntry {
     constructor(time, title, content) {
@@ -12,6 +21,35 @@ class MemoEntry {
 
     toString() {
         return this.time + ": [" + this.title + "] " + this.content;
+    }
+}
+
+/** The prompt content component */
+class Prompt extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: this.props.defaultValue
+        };
+
+        this.onChange = (e) => this._onChange(e);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.value !== this.state.value) {
+            this.props.onChange(this.state.value);
+        }
+    }
+
+    _onChange(e) {
+        let value = e.target.value;
+
+        this.setState({value: value});
+    }
+
+    render() {
+        return <input type="text" placeholder={this.props.placeholder} className="mm-popup__input" value={this.state.value} onChange={this.onChange} />;
     }
 }
 
@@ -145,6 +183,36 @@ class NewMemoBox extends Component {
 
     }
 
+    newMemoPopUp() {
+        Popup.registerPlugin('prompt', function (defaultValue, placeholder, callback) {
+            let promptValue = null;
+            let promptChange = function (value) {
+                promptValue = value;
+            };
+
+            this.create({
+                title: 'What\'s your name?',
+                content: <Prompt onChange={promptChange} placeholder={placeholder} value={defaultValue} />,
+                buttons: {
+                    left: ['cancel'],
+                    right: [{
+                        text: 'Save',
+                        key: '⌘+s',
+                        className: 'success',
+                        action: function () {
+                            callback(promptValue);
+                            Popup.close();
+                        }
+                    }]
+                }
+            });
+        });
+        Popup.plugins().prompt('', 'Type your name', function (value) {
+            Popup.alert('You typed: ' + value);
+        });
+    }
+
+
     // Render input fields
     render() {
         
@@ -171,8 +239,16 @@ class NewMemoBox extends Component {
         } else {
             return (
                 <div id="memo-page">
+                <Form className="mt-3 mb-4">
+                    <Row>
+                        <img src={icon} id="memos-new-memo-icon" />
+                        <Form.Control size="lg" type="text" name="title" placeholder="Quick Add. Type your memo title and hit ENTER." id="memos-quick-add-input"/>
+                        <Button size="lg" id="memos-new-memo-button" onClick={this.newMemoPopUp}> New memo </Button>
+                    </Row>
+                        {/* <i className="fa fa-plus-square fa-5x mr-5" id="memos-new-memo-icon" aria-hidden="true"></i> */}
+                </Form>
                 <div>
-                    <form id="memos-add-box" onSubmit={this.addMemo}>
+                    {/* <form id="memos-add-box" onSubmit={this.addMemo}>
                         <input 
                         type="text"
                         name="title"
@@ -186,7 +262,7 @@ class NewMemoBox extends Component {
                         onChange={this.handleInputChange}
                         />
                         <input type="submit" value="Submit"></input>
-                    </form>
+                    </form> */}
                 </div>
                 <div id="memoGallery">
                     <Grid memos={this.state.memosArray} onDelete={this.deleteCard} />

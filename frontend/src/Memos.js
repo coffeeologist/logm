@@ -3,6 +3,7 @@ import NewMemoBox from './MemoGallery';
 import { withRouter } from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 
+
 // Middle-man/ wrapper class for the memos page
 class Memos extends Component {
 
@@ -20,7 +21,10 @@ class Memos extends Component {
     
         return (
             <div>
-                <h1 id="memos-header">Memos</h1>
+                <div>
+                    <h1 id="memos-header">Memos</h1>
+                    <h3 id="memos-sub-header"> — Notes • Recollections • Reminders </h3>
+                </div>
                 <NewMemoBox userCredential={this.props.userCredential} children="Memo Gallery"/>
             </div>
         );

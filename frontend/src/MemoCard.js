@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { format } from 'date-fns';
+import Badge from 'react-bootstrap/Badge'
 
 class MemoCard extends Component {
 
@@ -33,6 +34,8 @@ class MemoCard extends Component {
               <p className="memo-card-time-stamp"> {formattedDate} </p>
               <i className="fa fa-times memo-card-remove-button" onClick={() => this.removeCard()}/>
               <h4 className="memo-card-title"> {this.props.memo.title} </h4>
+              <Badge className="badge-medium-green">Badge1</Badge> 
+              <Badge className="badge-light-peach">Badge2</Badge> 
               <Scrollbars id="memo-card-scrollbar" hideTracksWhenNotNeeded autoHide autoHideTimeout={0}> <p className="memo-card-content"> {this.props.memo.content} </p> </Scrollbars>
 
             </div>

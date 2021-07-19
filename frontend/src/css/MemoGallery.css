@@ -5,9 +5,61 @@
 }
 
 #memos-header {
-  margin-top: 5%;
+  /* margin-top: 5%; */
+  padding-top: 5%;
   margin-left: 5%;
+  margin-right: 1%;
   color: var(--off-white);
+  font-family: 'Nunito', serif;
+  font-weight: 700;
+  font-size: xxx-large;
+
+  display:inline-block;
+}
+
+#memos-sub-header {
+  font-weight: 200;
+  display:inline-block;
+  color: var(--light-peach);
+}
+
+#memos-quick-add-input {
+  margin-left: 1%;
+  margin-right: 1%;
+  display: inline-block;
+
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  border-radius: 0;
+  border-width: 0 0 3px 0;
+  border-style: solid solid solid solid;
+  border-color: var(--off-white);
+  width: 77.7%;
+
+  color: var(--off-white);
+}
+
+#memos-quick-add-input::placeholder {
+  color: var(--light-peach);
+  font-style: italic;
+}
+
+#memos-new-memo-button {
+  background-color: var(--medium-peach);
+  color: var(--off-white);
+  /* border-color: var(--medium-peach); */
+  border: none;
+  display:inline-block;
+  width: 13%;
+}
+
+/* styling */
+#memos-new-memo-icon {
+  width: 4%;
+  margin-left: 1.7%;
+  display: inline-block;
 }
 
 #memos-add-box {
@@ -27,7 +79,6 @@
   grid-gap: 1.5rem;
 }
 
-/* styling */
 
 .memo-card--expanded {
   grid-column: span 2;
@@ -60,13 +111,14 @@
 /* So that in minimized view, you can still scroll to see all the words */
 .memo-card-content {
   padding-bottom: 30%;
-  margin-bottom: 30%;
+  margin-bottom: 20%;
   font-weight: 400;
 }
 
 .memo-card-title {
   font-weight: 600;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .memo-card-time-stamp {
@@ -87,6 +139,20 @@
 
 .memo-card-remove-button:hover {
   color: #e0544a;
+}
+
+.badge {
+  margin-right: 1%;
+}
+
+.badge-medium-green {
+  background-color: var(--medium-green);
+  color: var(--off-white);
+}
+
+.badge-light-peach {
+  background-color: var(--light-peach);
+  color: var(--dark-peach);
 }
 
 /* .card--1 {

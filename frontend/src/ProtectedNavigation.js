@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
+import Popup from 'react-popup';
+
 import { BrowserRouter as Route, Switch, withRouter } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu'
 import firebase from 'firebase';
@@ -57,6 +60,7 @@ class ProtectedNavigation extends Component {
             
         <div>
         {/* <Router> */}
+            <Popup/>
             <Menu disableAutoFocus id="navigation-sidebar" customCrossIcon={ false }>
                 <div id="sidebar-header">
                   <div id="sidebar-header-inner-wrapper">

@@ -3,6 +3,7 @@
 @import "Register.css";
 @import "MemoGallery.css";
 @import "Sidebar.css";
+@import "Popup.css";
 
 body {
   margin: 0;
