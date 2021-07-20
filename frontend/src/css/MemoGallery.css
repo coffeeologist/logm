@@ -150,27 +150,27 @@
   color: var(--off-white);
 }
 
+.badge-medium-peach {
+  background-color: var(--medium-peach);
+  color: var(--off-white);
+}
+
 .badge-light-peach {
   background-color: var(--light-peach);
   color: var(--dark-peach);
 }
 
-/* .card--1 {
-  background-color: #366f6e;
+.badge-light-green {
+  background-color: var(--light-green);
+  color: var(--dark-green);
 }
 
-.card--2 {
-  background-color: #79ac91;
+.badge-dark-peach {
+  background-color: var(--dark-peach);
+  color: var(--off-white);
 }
 
-.card--3 {
-  background-color: #e2b060;
+.badge-dark-green {
+  background-color: var(--dark-green);
+  color: var(--off-white);
 }
-
-.card--4 {
-  background-color: #e86448;
-}
-
-.card--5 {
-  background-color: #dc5263;
-} */

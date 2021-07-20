@@ -4,9 +4,16 @@ import React, {Component} from 'react';
 
 class Grid extends Component {
 
-    // constructor() {
-    //     super();
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+          array: this.props.memos
+        }
+    }
+
+    changeState() {
+      this.setState({flag: !this.state.flag});
+    }
 
     wrapGrid() {
         wrapGrid(this.grid, { easing : 'backOut', stagger: 10, duration: 400 });

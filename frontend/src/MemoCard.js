@@ -16,6 +16,27 @@ class MemoCard extends Component {
     this.props.onDelete(this.props.memo.time);
   }
 
+  renderBadges() {
+    var res = [];
+    if(this.props.memo.badge1 !== "") {
+      var classColor = "badge-" + this.props.memo.badgeColor1;
+      res.push(<Badge key={1} className={classColor}>{this.props.memo.badge1}</Badge>);
+    }
+    if(this.props.memo.badge2 !== "") {
+      var classColor = "badge-" + this.props.memo.badgeColor2;
+      res.push(<Badge key={2} className={classColor}>{this.props.memo.badge2}</Badge>);
+    }
+    if(this.props.memo.badge3 !== "") {
+      var classColor = "badge-" + this.props.memo.badgeColor3;
+      res.push(<Badge key={3} className={classColor}>{this.props.memo.badge3}</Badge>);
+    }
+    if(this.props.memo.badge4 !== "") {
+      var classColor = "badge-" + this.props.memo.badgeColor4;
+      res.push(<Badge key={4} className={classColor}>{this.props.memo.badge4}</Badge>);
+    }
+    return res;
+  }
+
   render() {
     var d = new Date(parseInt(this.props.memo.time));
     var formattedDate = format(d, "MMM do, yyyy • H:mma");
@@ -34,8 +55,7 @@ class MemoCard extends Component {
               <p className="memo-card-time-stamp"> {formattedDate} </p>
               <i className="fa fa-times memo-card-remove-button" onClick={() => this.removeCard()}/>
               <h4 className="memo-card-title"> {this.props.memo.title} </h4>
-              <Badge className="badge-medium-green">Badge1</Badge> 
-              <Badge className="badge-light-peach">Badge2</Badge> 
+              {this.renderBadges()}
               <Scrollbars id="memo-card-scrollbar" hideTracksWhenNotNeeded autoHide autoHideTimeout={0}> <p className="memo-card-content"> {this.props.memo.content} </p> </Scrollbars>
 
             </div>
