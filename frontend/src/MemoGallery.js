@@ -60,6 +60,7 @@ class NewMemoBox extends Component {
         this.setState({ [event.target.name]: event.target.value });
     };
 
+    // Exclusive use by the MemoNewEntryForm to copy over all the values the user entered
     updateStateWithFormValue = (newValues) => {
         this.setState({
             title: newValues.title, 
@@ -77,6 +78,7 @@ class NewMemoBox extends Component {
         });
     }
 
+    // Wrapper to prevent the form from refereshing the whole page
     addMemoOnSubmit = (event) => {
         event.preventDefault();
         this.addMemo();
@@ -110,9 +112,7 @@ class NewMemoBox extends Component {
         // Add time stamp
         const secSinceEpoch = new Date().getTime().toString();
 
-        // e.preventDefault();
         if(this.state.title !== "" || this.state.content !== "") { // prevent empty memos
-
             const db = firebase.firestore();
             const memoEntry = new MemoEntry(
                 secSinceEpoch,
@@ -135,7 +135,7 @@ class NewMemoBox extends Component {
                 .set(memoEntry);
         }
 
-        // Display the card in the gallery
+        // Display the card in the gallery + add it to state.memosArray
         this.renderNewCard(secSinceEpoch, this.state.title === "" ? "Untitled" : this.state.title, this.state.content === "" ? "No content" : this.state.content, this.state.badge1, this.state.badgeColor1, this.state.badge2, this.state.badgeColor2, this.state.badge3, this.state.badgeColor3, this.state.badge4, this.state.badgeColor4, false);
 
         // Reset state value and form 
@@ -151,18 +151,16 @@ class NewMemoBox extends Component {
             badge4: "",
             badgeColor4:""
         });
-        // var form = document.getElementById("memos-add-box");
-        // form.reset();
 
+        // reset the quick add box's values
         var quickAddForm = document.getElementById("memos-quick-add-form");
         quickAddForm.reset();
     }
 
     deleteCard(obj, arr, secSinceEpoch) {
-        // find it anjd remove it locally
+        // find it and remove it locally in html
         var toDelete = document.getElementById(secSinceEpoch);
         toDelete.remove();
-        
 
         // remove it form the memosArray
         var index = -1;
@@ -182,62 +180,33 @@ class NewMemoBox extends Component {
             .delete();
     }
 
+    addToMemosArray = (memo) => {
+        var clonedArray = JSON.parse(JSON.stringify(this.state.memosArray));
+        clonedArray.unshift(memo);
+        this.state.memosArray.unshift(memo);
+        this.setState({memosArray:clonedArray});
+    }
+
+    // Render new card + add it to the state (the change in state will trigger re-render)
     renderNewCard(time, title, content, badge1, badgeColor1, badge2, badgeColor2, badge3, badgeColor3, badge4, badgeColor4, isInitial) {
-        var props = {time:time, title:title, content:content, badge1:badge1, badgeColor1:badgeColor1, badge2:badge2, badgeColor2:badgeColor2, badge3:badge3, badgeColor3:badgeColor3, badge4:badge4, badgeColor4:badgeColor4};
+        var memo = {time:time, title:title, content:content, badge1:badge1, badgeColor1:badgeColor1, badge2:badge2, badgeColor2:badgeColor2, badge3:badge3, badgeColor3:badgeColor3, badge4:badge4, badgeColor4:badgeColor4};
 
-        if(isInitial) {
-            var clonedArray = JSON.parse(JSON.stringify(this.state.memosArray));
-            clonedArray.unshift(props);
-            this.state.memosArray.unshift(props);
-            this.setState({memosArray:clonedArray});
-
-            let dummy = document.createElement("div");
-            var gallery = document.querySelector(".grid");
-
-            setTimeout(()=> {
-            dummy.textContent = " ";
-            dummy.id = "dummy";
-            if(!gallery.firstChild) {
-                gallery.appendChild(dummy);
-            }
-            gallery.insertBefore(dummy, gallery.firstChild)
-
-            }, 0);
-            
-            setTimeout(()=>{
-                gallery.removeChild(dummy)
-            }, 0);
-            return;
-        }
-        
-
-        // insert dummy to simulate a move/popping animation
-
-        // Give the new card a chance to load beofre removing the dummy, faking an "animation"
         let dummy = document.createElement("div");
         var gallery = document.querySelector(".grid");
 
-        setTimeout(() =>{
-        dummy.textContent = " ";
-        dummy.id = "dummy";
-        if(!gallery.firstChild) {
-            gallery.appendChild(dummy);
+        if(isInitial) { // initial load of ALL cards upon entering the page
+            // Add it to the array first
+            this.addToMemosArray(memo);
+
+        } else { // Adding an individual card 
+            setTimeout(() =>{
+                dummy.textContent = " ";
+                dummy.id = "dummy";
+                if(!gallery.firstChild) { gallery.appendChild(dummy); }
+                gallery.insertBefore(dummy, gallery.firstChild)
+            }, 0);
+            setTimeout(()=> { this.addToMemosArray(memo) }, 250)
         }
-        gallery.insertBefore(dummy, gallery.firstChild)
-
-        }, 0);
-
-        // setTimeout(()=>{
-        //     gallery.removeChild(dummy)
-        // }, 900);
-
-        setTimeout(()=> {
-            // Insert the new memo into the memosArray to be actually added 
-            var clonedArray = JSON.parse(JSON.stringify(this.state.memosArray));
-            clonedArray.unshift(props);
-            this.state.memosArray.unshift(props);
-            this.setState({memosArray:clonedArray});
-        }, 250)
     }
 
     // Once the component mounts, get the data and start rendering
@@ -251,16 +220,21 @@ class NewMemoBox extends Component {
             .doc(uid)
             .collection("text")
             .get().then((querySnapshot) => {
+                var timer = 0;
                 querySnapshot.forEach((doc) => {
                     var data = doc.data();
+                    setTimeout(() => {
+                        
                     this.renderNewCard(data.time, data.title, data.content, data.badge1, data.badgeColor1, data.badge2, data.badgeColor2, data.badge3, data.badgeColor3, data.badge4, data.badgeColor4, true);
+                    }, timer);
+                    timer += 50;
                 });
             });
         
         this.render();
-
     }
 
+    // Bring a pop window to allow user to put in memo entry details
     newMemoPopUp(update, addMemo) {
         Popup.registerPlugin('prompt', function (update, addMemo) {
             var form = new MemoNewEntryForm();
@@ -284,10 +258,9 @@ class NewMemoBox extends Component {
         Popup.plugins().prompt(update, addMemo);
     }
 
-
     // Render input fields
     render() {
-        if(this.state.memosArray.length < 0) {
+        if(this.state.memosArray.length < 0) { //TODO
             return(
             <div id="memo-page">
                 <form id="memos-add-box" onSubmit={this.addMemo}>

@@ -49,7 +49,6 @@
 #memos-new-memo-button {
   background-color: var(--medium-peach);
   color: var(--off-white);
-  /* border-color: var(--medium-peach); */
   border: none;
   display:inline-block;
   width: 13%;
@@ -62,17 +61,12 @@
   display: inline-block;
 }
 
-#memos-add-box {
-  /* margin-left: 5%; */
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-template-rows: minmax(15rem, 15em);
   grid-auto-rows: 15em;
   grid-gap: 0px;
-  /* grid-auto-flow: dense; */
 }
 
 .grid-gap {
@@ -92,9 +86,7 @@
   background-color: var(--off-white);
   border: 5px solid var(--dark-green);
   border-radius: 7%;
-  /* font-family: "Nunito", serif; */
   color: var(--dark-peach);
-
 
   /*      top right bottom left */
   padding: 0% 5% 5% 5%;
@@ -105,8 +97,6 @@
   overflow: hidden;
   width: 100%;
 }
-
-
 
 /* So that in minimized view, you can still scroll to see all the words */
 .memo-card-content {
