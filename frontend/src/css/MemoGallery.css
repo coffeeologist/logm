@@ -63,7 +63,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 20%));
   grid-template-rows: minmax(15rem, 15em);
   grid-auto-rows: 15em;
   grid-gap: 0px;

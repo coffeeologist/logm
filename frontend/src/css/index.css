@@ -4,6 +4,7 @@
 @import "MemoGallery.css";
 @import "Sidebar.css";
 @import "Popup.css";
+@import "HomePage.css";
 
 body {
   margin: 0;

@@ -1,0 +1,170 @@
+#home-page {
+    background-color: var(--light-green);
+}
+
+#main-navbar {
+    background: var(--light-green);
+    font-size: large;
+
+    /* margin: auto;
+    align-content: center; */
+    /* position: fixed;
+    top: 0px;
+    z-index: 999; */
+}
+
+.main-navbar-icon {
+}
+
+.main-navbar-item {
+    /* margin-right: 5%; */
+    color: var(--dark-green) !important;
+}
+
+.inline-block {
+    display: inline;
+}
+
+#navbar-brand-icon {
+    width:17%;
+}
+
+#main-brand-title {
+    font-size: 500%;
+    margin-right: 1%;
+    color: var(--dark-green);
+    font-weight: 900;
+}
+
+#main-brand-subtitle  {
+    color: var(--dark-green)
+}
+
+#main-brand-subsubtitle {
+    margin-top: 1%;
+    color: var(--medium-green)
+}
+
+
+/* Intro section */
+#main-intro {
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  margin: auto;
+  background: var(--light-green);
+
+  padding-left: 10%;
+  padding-right: 10%;
+
+    padding-top: 20%;
+    padding-bottom: 7%;
+
+  font-family: "Nunito", serif;
+}
+
+#main-brand-word {
+    z-index: 999;
+}
+
+#main-brand-get-started {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-down: 1%;
+    margin-top: 2%;
+    background-color: var(--medium-peach);
+    border: none;
+    color: var(--off-white)
+}
+
+#main-splash{
+    width: 50%;
+
+    display: inline;
+    position: absolute;
+    top: 30%;
+    /* float: right; */
+    margin-top: -10%;
+    margin-bottom: -20%;
+
+    right: 5%;
+    z-index: 998;
+}
+
+#main-splash-2{
+    width: 30%;
+
+    display: inline;
+    position: absolute;
+    top: 48%;
+    /* float: right; */
+    margin-top: -10%;
+    margin-bottom: -20%;
+
+    right: 33%;
+    z-index: 998;
+}
+
+
+
+/* Features page */
+#main-features-memos {
+    padding: 0;
+    /* margin:0; */
+    margin-right: 0;
+    /* margin-top: -20%; */
+    /* padding-top: 20%; */
+    background-color: var(--dark-green);
+}
+
+#main-memos-example {
+    width: 100%;
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+
+#main-memos-description {
+    padding-left: 5%;
+    padding-top: 17%;
+    padding-right: 5%;
+
+    font-family: "Nunito", serif;
+}
+
+#main-memos-main-description {
+    color: var(--light-green);
+}
+
+#main-memos-sub-description {
+    color: var(--medium-green);
+}
+
+
+
+#main-demo {
+    padding-top:10%;
+    padding-bottom: 10%;
+    background-color: var(--off-white);
+    margin:0;
+}
+
+
+
+
+#main-about {
+    padding-top:10%;
+    padding-bottom: 10%;
+    background-color: var(--medium-green);
+    margin:0;
+}
+
+
+
+#main-contact {
+    padding-top:10%;
+    padding-bottom: 10%;
+    background-color: var(--dark-green);
+    margin:0;
+}
