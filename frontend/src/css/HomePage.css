@@ -116,13 +116,13 @@
     /* margin-top: -20%; */
     /* padding-top: 20%; */
     background-color: var(--dark-green);
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 #main-memos-example {
     width: 100%;
-    padding-top: 10%;
     padding-left: 10%;
-    padding-bottom: 10%;
 }
 
 #main-memos-description {
@@ -144,10 +144,85 @@
 
 
 #main-demo {
-    padding-top:10%;
-    padding-bottom: 10%;
+    padding: 10% 5% 10% 5%;
     background-color: var(--off-white);
     margin:0;
+}
+
+#main-demo-center-island {
+    background-image: url(../img/register_center_background.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
+}
+
+#main-demo-form-title {
+  color: var(--light-peach);
+  margin: 0;
+  padding: 10% 10% 2% 10%;
+}
+
+#main-demo-form {
+  width:100%;
+  padding-left: 10%;
+  margin-bottom: 15%;
+  background-color: transparent;
+}
+
+#main-demo-form-email, #main-demo-form-password, #main-demo-form i {
+    display: inline;
+}
+
+#main-demo-form i {
+    margin-right: 2%;
+    color: var(--light-peach);
+}
+
+#main-demo-form-email, #main-demo-form-password {
+  background-color:  transparent;
+
+  border-radius: 0;
+  border-width: 0 0 3px 0;
+  border-style: solid solid solid solid;
+  border-color: var(--medium-peach);
+  padding: 0;
+  width: 80%;
+
+  color: var(--off-white);
+}
+
+#main-demo-form-email::placeholder, #main-demo-form-password::placeholder {
+  color: var(--off-white);
+}
+
+#main-demo-form-email:active, #main-demo-form-password:active {
+  color: var(--off-white) !important;
+  border-width: 0 0 3px 0 !important;
+}
+
+#main-demo-form-button {
+  width:85%;
+  background-color: var(--medium-peach);
+  border-color: var(--medium-peach);
+  color: var(--off-white)
+}
+
+#main-demo-form-button i {
+    color: var(--off-white);
+    margin-left: 1%;
+}
+
+#main-demo-description {
+    font-family: "Nunito", serif;
+    padding-left: 5%;
+}
+
+#main-demo-description-title {
+    color: var(--dark-peach);
+}
+
+#main-demo-description-body, #main-demo-description-list, #main-demo-description-end {
+    color: var(--medium-peach);
 }
 
 
@@ -158,13 +233,94 @@
     padding-bottom: 10%;
     background-color: var(--medium-green);
     margin:0;
+    color: var(--off-white);
+    font-size: large;
+    font-family: "Nunito", serif;
+}
+
+#main-about-header {
+    font-family: "Nunito", serif;
+    color: var(--off-white);
+    float: right;
+    text-align: right;
+
+}
+
+ul i {
+    margin-right: 0.5%;
+}
+
+ul.no-bullets {
+    list-style-type: none;
+}
+
+ul p {
+    background-color: var(--medium-peach);
+    border-radius: 7px;
+    color: var(--off-white) !important;
+    display: inline;
+    padding: 3px 7px 3px 7px;
+}
+
+ul li {
+    margin-bottom: 1%;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 
 
 #main-contact {
     padding-top:10%;
-    padding-bottom: 10%;
+    /* padding-bottom: 10%; */
     background-color: var(--dark-green);
     margin:0;
+}
+
+.main-contact-section {
+    margin: auto;
+}
+
+#main-contact i {
+    color: var(--off-white);
+    margin-bottom: 6%;
+}
+
+#main-contact a {
+    cursor: pointer;
+}
+
+#main-contact p {
+    font-size: large;
+    color: var(--light-green);
+}
+
+#main-contact-header {
+    color: var(--light-green);
+    font-family: "Nunito", serif;
+    font-weight: 300;
+    margin-bottom: 3%;
+
+}
+
+#main-contact-phone-tooltip > .tooltip-inner{
+    background-color: var(--off-white);
+    color: var(--dark-green)
+}
+
+#main-contact-phone-tooltip > .arrow::before{
+    border-top-color: var(--off-white);
+}
+
+.main-footer {
+    margin-top:5%;
+    margin-bottom: 2%;
+}
+
+.main-footer > p {
+    margin-bottom: 0;
+    font-weight: 100;
+    font-size: small !important;
 }

@@ -123,10 +123,10 @@ class Login extends Component {
                                 <NavLink to="/register" id="login-redirect" >Sign up</NavLink> 
                                 &nbsp; or login with </p>
                             <Button onClick={signInWithGoogle} className="mx-1" lg="auto" id="login-form-alternate-provider-button">
-                                <i class="fa fa-google fa-2x login-form-alternate-provider-icon" aria-hidden="true"></i>
+                                <i class="fab fa-google fa-2x login-form-alternate-provider-icon" aria-hidden="true"></i>
                             </Button>
                             <Button onClick={signInWithGithub} className="mx-1" id="login-form-alternate-provider-button">
-                                <i class="fa fa-github fa-2x login-form-alternate-provider-icon" aria-hidden="true"></i>
+                                <i class="fab fa-github fa-2x login-form-alternate-provider-icon" aria-hidden="true"></i>
                             </Button>
                         </Row>
 

@@ -26,19 +26,19 @@ class ProtectedNavigation extends Component {
             <span>Dashboard</span>
           </a>,
           <a key="0" href="/memos">
-            <i className="fa fa-fw fa-sticky-note-o"></i>
+            <i className="fas fa-fw fa-sticky-note"></i>
             <span>Memos</span>
           </a>,
           <a key="1" href="/dummy">
-            <i className="fa fa-fw fa-clock-o" />
+            <i className="fas fa-fw fa-clock" />
             <span>Timeline</span>
           </a>,
           <a key="2" href="">
-            <i className="fa fa-fw fa-th-large" />
+            <i className="fas fa-fw fa-th-large" />
             <span>Gallery</span>
           </a>,
           <a key="3" href="">
-            <i className="fa fa-fw fa-check-square-o" />
+            <i className="fas fa-fw fa-check-square" />
             <span>Todo list</span>
           </a>,
     ]};
@@ -76,7 +76,7 @@ class ProtectedNavigation extends Component {
                   <span>Logm splash page</span>
                 </a>
                 <a key="5" id="sidebar-logout-button" onClick={this.logOutUser}>
-                  <i className="fa fa-fw fa-sign-out" />
+                  <i className="fas fa-fw fa-sign-out-alt" />
                   <span>Sign out</span>
                 </a>
             </Menu>
