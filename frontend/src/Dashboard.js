@@ -9,8 +9,19 @@ class Dashboard extends Component {
         // Change background splash
         document.body.style.backgroundColor = "#6B705C"
         document.body.style.overflow = "hidden";
+
+        // hide the scroll bar
+        document.getElementById("main-scrollbar").visibility = "hidden";
     }
 
+    componentWillUnmount = e => {
+        // Revert it back to normal
+        document.body.style.backgroundColor = "transparent";
+        document.body.style.overflow = "auto";
+
+        // bring scroll back
+        document.getElementById("main-scrollbar").visibility = "visible";
+    }
  render() {
     return (
         // TODO: time zone selection

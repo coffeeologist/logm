@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GeneralNavigation from './GeneralNavigation';
 import firebase from './firebase.utils';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -35,8 +37,13 @@ class App extends Component {
 
     // Render the navigation bar that will handle/differentiate between authenticated vs not users
     render() {
-        return <GeneralNavigation authenticated={this.state.authenticated} userCredential={this.state.userCredential} />
-    }
+        return (
+            <Scrollbars id="main-scrollbar">
+                <GeneralNavigation authenticated={this.state.authenticated} userCredential={this.state.userCredential} />
+            </Scrollbars>
+    
+        );
+        }
 }
 
 export default App;

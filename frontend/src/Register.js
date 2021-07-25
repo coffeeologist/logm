@@ -35,12 +35,18 @@ class Register extends Component {
         // Change background splash
         document.body.style.backgroundColor = "#FFE8D6"
         document.body.style.overflow = "hidden";
+
+        // hide scroll bar
+        document.getElementById("main-scrollbar").visibility = "hidden";
     }
 
     componentWillUnmount = e => {
         // Revert it back to normal
         document.body.style.backgroundColor = "transparent";
         document.body.style.overflow = "auto";
+        
+        // bring scroll back
+        document.getElementById("main-scrollbar").visibility = "visible";
     }
 
     // Keep input form updated
