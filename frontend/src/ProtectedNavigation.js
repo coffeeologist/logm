@@ -41,6 +41,10 @@ class ProtectedNavigation extends Component {
             <i className="fas fa-fw fa-check-square" />
             <span>Todo list</span>
           </a>,
+          <a key="4" href="">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>,
     ]};
 
     logOutUser = () => {
@@ -71,11 +75,11 @@ class ProtectedNavigation extends Component {
                 {this.state.items}
 
                 <div className="divider"><p></p></div>
-                <a key="4" href="/">
+                <a key="5" href="/">
                   <i className="fa fa-fw fa-info-circle" />
                   <span>Logm splash page</span>
                 </a>
-                <a key="5" id="sidebar-logout-button" onClick={this.logOutUser}>
+                <a key="6" id="sidebar-logout-button" onClick={this.logOutUser}>
                   <i className="fas fa-fw fa-sign-out-alt" />
                   <span>Sign out</span>
                 </a>
