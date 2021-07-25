@@ -5,6 +5,7 @@
 @import "Sidebar.css";
 @import "Popup.css";
 @import "HomePage.css";
+@import "Dashboard.css";
 
 body {
   margin: 0;

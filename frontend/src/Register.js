@@ -65,7 +65,7 @@ class Register extends Component {
         firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-            .then((user) => { this.props.history.push('/'); })
+            .then((user) => { this.props.history.push('/login'); })
             .catch((error) => { this.setState({ error: error }); });
 
         // TODO: need to figure out how to delay unmounting

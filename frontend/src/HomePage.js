@@ -65,8 +65,8 @@ class HomePage extends Component {
                         <h4 id="main-brand-subsubtitle">
                             Notes. Timelines. Reminders. Memories.
                         </h4>
-                        <NavLink to="/login">
-                            <Button size="lg" className="ml-2" id="main-brand-get-started"> Get Started <i class="fas fa-sign-in-alt"></i> </Button>
+                        <NavLink to="/login" className="ml-0">
+                            <Button size="lg" className="ml-0" id="main-brand-get-started"> Get Started <i class="fas fa-sign-in-alt"></i> </Button>
                         </NavLink>
                     </div>
                 
