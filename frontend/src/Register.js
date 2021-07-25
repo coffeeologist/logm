@@ -35,11 +35,6 @@ class Register extends Component {
         // Change background splash
         document.body.style.backgroundColor = "#FFE8D6"
         document.body.style.overflow = "hidden";
-
-        // Add background for center island
-        document.getElementById("register-center-island").style.backgroundImage = "url(https://raw.githubusercontent.com/coffeeologist/logm/main/frontend/src/img/register_center_background.png)";
-        document.getElementById("register-center-island").style.backgroundRepeat = "repeat-x";
-        document.getElementById("register-center-island").style.backgroundPosition = "center";
     }
 
     componentWillUnmount = e => {
@@ -129,7 +124,7 @@ class Register extends Component {
 
                     {/* Logo on the right side */}
                     <Col lg={6} className="pt-5 pb-5">
-                        <NavLink to="/dashboard">
+                        <NavLink to="/">
                             <Image className="pt-5 pb-5 pr-3" id="register-logo" src={logo} fluid />
                         </NavLink>
                     </Col>

@@ -36,11 +36,6 @@ class Login extends Component {
         // Change background splash
         document.body.style.backgroundColor = "#6B705C"
         document.body.style.overflow = "hidden";
-
-        // Add background for center island
-        document.getElementById("login-center-island").style.backgroundImage = "url(https://raw.githubusercontent.com/coffeeologist/logm/main/frontend/src/img/center_background.png)";
-        document.getElementById("login-center-island").style.backgroundRepeat = "repeat-x";
-        document.getElementById("login-center-island").style.backgroundPosition = "center";
     }
 
     componentWillUnmount = e => {
